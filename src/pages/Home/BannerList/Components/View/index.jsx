@@ -1,31 +1,21 @@
-import { Form, Input, Modal } from 'antd';
+import { Modal } from 'antd';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import { Intl } from 'qg-react-components';
+import React from 'react';
 
 import styles from './index.scss';
 
 function BannerListViewModal(props) {
   const { data = {}, title = '', visible = false, onCancel = () => {} } = props;
 
-  const [form] = Form.useForm();
-
-  useEffect(() => {
-    if (data) {
-      const rec = { ...(data || {}) };
-
-      form.setFieldsValue(rec);
-    } else {
-      form.resetFields();
-    }
-  }, [data]);
-
   return (
     <Modal forceRender okText="返回" onCancel={onCancel} open={visible} title={title}>
-      <Form className={styles.BannerListViewModal} form={form}>
-        <Form.Item label="用户名称：" name="Users">
-          <Input maxLength={200} />
-        </Form.Item>
-      </Form>
+      <div className={styles.BannerListViewModal}>
+        <div className="BannerListViewModalItem">
+          <label>{Intl.v('用户名')}</label>
+          <div>{data.Users}</div>
+        </div>
+      </div>
     </Modal>
   );
 }
@@ -34,7 +24,7 @@ BannerListViewModal.propTypes = {
   data: PropTypes.object,
   title: PropTypes.string,
   visible: PropTypes.bool,
-  onSetModalStatus: PropTypes.func,
+  onCancel: PropTypes.func,
 };
 
 export default BannerListViewModal;

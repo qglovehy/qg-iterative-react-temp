@@ -14,7 +14,7 @@ function BannerList() {
   //执行子组件 (列表组件) 方法
   const ref = useRef();
 
-  const [localData, setLocalData] = useState({});
+  const [localEditData, setLocalData] = useState({});
   const [localViewData, setLocalViewData] = useState({});
 
   const [saveVisible, setSaveVisible] = useState(false);
@@ -192,16 +192,16 @@ function BannerList() {
 
       {/*新建编辑弹出层*/}
       <BannerListSaveOrUpdateWrap
-        {...localData}
+        {...localEditData}
         onCancel={onBannerListEditCancel}
-        saveVisible={saveVisible}
+        visible={saveVisible}
       />
 
       {/*查看弹出层*/}
       <BannerListViewModal
         {...localViewData}
         onCancel={onBannerListViewCancel}
-        saveVisible={viewVisible}
+        visible={viewVisible}
       />
     </div>
   );
