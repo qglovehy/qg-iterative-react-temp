@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { requestLogin } from '@/services/login';
 
+import LottieAnimation from '@/components/project/LottieAnimation';
+
+import lotty1 from '@/assets/lotty/lot1.json';
+
 import styles from './index.scss';
 
 function Login() {
@@ -16,22 +20,22 @@ function Login() {
   const onFinish = async (values) => {
     const res = await requestLogin(values);
 
-    if (res?.code !== 200) {
-      message.error(res?.msg);
-
-      return;
-    }
+    // if (res?.code !== 200) {
+    //   message.error(res?.msg);
+    //
+    //   return;
+    // }
 
     dispatch(
       onSetState({
-        token: res?.data?.Token,
-        roleType: res?.data?.Username || 'user',
-        username: res?.data?.Nick,
+        token: res?.data?.Token || 'token',
+        roleType: res?.data?.Username || 'admin',
+        username: res?.data?.Nick || '123456',
       }),
     );
 
     //跳转到上一次退出前选择的菜单项
-    navigate('/userProcessList');
+    navigate('/');
   };
 
   //表单输入错误事件
@@ -53,8 +57,17 @@ function Login() {
 
   return (
     <div className={styles.Login}>
+      {/*动画*/}
+      <LottieAnimation animationData={lotty1} />
+
+      {/*标题*/}
+      <div className={styles.LoginTitle}>欢迎进入QG-REACT演示项目</div>
+
+      {/*分割线*/}
+      <div className={styles.LoginLine}></div>
+
+      {/*登录表单*/}
       <div className={styles.LoginFormBox}>
-        <div className={styles.LoginTitle}>后台管理系统</div>
         <Form autoComplete="off" name="basic" onFinish={onFinish} onFinishFailed={onFinishFailed}>
           <Form.Item
             name="username"

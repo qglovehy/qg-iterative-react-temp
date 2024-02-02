@@ -1,11 +1,12 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { Modal, message } from 'antd';
+import { Form, Input, Modal, message } from 'antd';
 import { BaseList, Intl, ProtectedButton } from 'qg-react-components';
 import React, { useRef, useState } from 'react';
 
 import { requestClearSuperviseUser, requestGetSuperviseUser } from '@/services/black';
 
-import LocalizedModal from '../SaveOrUpdate';
+import BannerListSaveOrUpdateWrap from '../SaveOrUpdate/wrap';
+import BannerListViewModal from '../View';
 
 import styles from './index.scss';
 
@@ -13,28 +14,41 @@ function BannerList() {
   //执行子组件 (列表组件) 方法
   const ref = useRef();
 
-  const [visible, setVisible] = useState(false);
+  const [localData, setLocalData] = useState({});
+  const [localViewData, setLocalViewData] = useState({});
+
+  const [saveVisible, setSaveVisible] = useState(false);
+  const [viewVisible, setViewVisible] = useState(false);
 
   //搜索表单
-  const searchData = useRef([]);
+  const searchData = useRef([
+    {
+      key: 'Users',
+      value: (
+        <Form.Item label="用户名" name="Users">
+          <Input />
+        </Form.Item>
+      ),
+    },
+  ]);
 
   //表头
   const columns = useRef([
     {
-      title: '序号',
+      title: Intl.v('序号'),
       align: 'center',
       dataIndex: 'index',
       key: 'index',
       width: 80,
     },
     {
-      title: '用户名',
+      title: Intl.v('用户名'),
       align: 'center',
-      dataIndex: 'SuspiciousUsers',
-      key: 'SuspiciousUsers',
+      dataIndex: 'Users',
+      key: 'Users',
     },
     {
-      title: '创建时间',
+      title: Intl.v('创建时间'),
       align: 'center',
       dataIndex: 'CreateTime',
       key: 'CreateTime',
@@ -43,52 +57,31 @@ function BannerList() {
       title: Intl.v('操作'),
       dataIndex: 'option',
       key: 'option',
-      width: 120,
       render: (_, record) => (
-        <ProtectedButton action="delete" key="delete" onClick={() => onDelete(record)} type="link">
-          删除
-        </ProtectedButton>
+        <>
+          <ProtectedButton action="edit" key="edit" onClick={() => onEdit(record)} type="link">
+            {Intl.v('编辑')}
+          </ProtectedButton>
+          <ProtectedButton action="view" key="view" onClick={() => onView(record)} type="link">
+            {Intl.v('查看')}
+          </ProtectedButton>
+          <ProtectedButton action="delete" key="del" onClick={() => onDelete(record)} type="link">
+            {Intl.v('删除')}
+          </ProtectedButton>
+        </>
       ),
     },
   ]);
 
   //列头操作按钮
-  const optionButtonGroup = useRef([]);
-
-  function onSetModalStatus(visible) {
-    setVisible(visible);
-
-    //刷新列表
-    !visible && ref.current?.onSearch?.();
-  }
-
-  function onDelete(record) {
-    Modal.confirm({
-      title: `确认删除【${record?.SuspiciousUsers}】？`,
-      icon: <ExclamationCircleOutlined />,
-      okText: '确认',
-      cancelText: '取消',
-      wrapClassName: 'centered-modal',
-      onOk: async () => {
-        const res = await requestClearSuperviseUser({ Id: record.Id });
-
-        if (res?.code !== 200) {
-          message.warning(res?.msg);
-
-          return;
-        }
-
-        message.success(res?.msg);
-
-        //刷新列表
-        ref.current?.onSearch?.();
-      },
-    });
-  }
+  const optionButtonGroup = useRef([
+    <ProtectedButton action="add" key="save" onClick={onSave} type="primary">
+      {Intl.v('新增')}
+    </ProtectedButton>,
+  ]);
 
   //查询列表数据
   async function requestListAllData(params = {}, callback) {
-    debugger;
     const res = await requestGetSuperviseUser(params);
 
     if (res?.code !== 200) {
@@ -108,6 +101,83 @@ function BannerList() {
     callback?.(resData);
   }
 
+  //删除
+  function onDelete(record) {
+    Modal.confirm({
+      title: `${Intl.v('确认删除')}【${record?.Users}】？`,
+      icon: <ExclamationCircleOutlined />,
+      okText: Intl.v('确认'),
+      cancelText: Intl.v('取消'),
+      wrapClassName: 'centered-modal',
+      onOk: async () => {
+        const res = await requestClearSuperviseUser({ Id: record.Id });
+
+        if (res?.code !== 200) {
+          message.warning(res?.msg);
+
+          return;
+        }
+
+        message.success(res?.msg);
+
+        //刷新列表
+        ref.current?.onSearch?.();
+      },
+    });
+  }
+
+  //新增
+  function onSave() {
+    setLocalData({
+      data: null,
+      title: Intl.v('新增'),
+    });
+
+    onBannerListEditOpen();
+  }
+
+  //编辑
+  function onEdit(data) {
+    setLocalData({
+      data,
+      title: '编辑',
+    });
+
+    onBannerListEditOpen();
+  }
+
+  //查看
+  function onView(data) {
+    setLocalViewData({
+      data,
+      title: '查看',
+    });
+
+    onBannerListViewOpen();
+  }
+
+  //关闭编辑弹窗
+  function onBannerListEditCancel() {
+    setSaveVisible(false);
+
+    ref.current?.onSearch?.();
+  }
+
+  //打开编辑弹窗
+  function onBannerListEditOpen() {
+    setSaveVisible(true);
+  }
+
+  //关闭查看弹窗
+  function onBannerListViewCancel() {
+    setViewVisible(false);
+  }
+
+  //打开查看弹窗
+  function onBannerListViewOpen() {
+    setViewVisible(true);
+  }
+
   return (
     <div className={styles.DrawIndex}>
       <BaseList
@@ -120,8 +190,19 @@ function BannerList() {
         // otherParams={{ showHeader: false }} //其他 antd 表格属性
       />
 
-      {/*弹出层*/}
-      <LocalizedModal onSetModalStatus={onSetModalStatus} visible={visible} />
+      {/*新建编辑弹出层*/}
+      <BannerListSaveOrUpdateWrap
+        {...localData}
+        onCancel={onBannerListEditCancel}
+        saveVisible={saveVisible}
+      />
+
+      {/*查看弹出层*/}
+      <BannerListViewModal
+        {...localViewData}
+        onCancel={onBannerListViewCancel}
+        saveVisible={viewVisible}
+      />
     </div>
   );
 }

@@ -27,7 +27,7 @@ function OptionRouters() {
         {
           id: 'BannerList',
           path: '/bannerList',
-          label: '黑名单管理',
+          label: '一套增删改查',
           element: <BannerList />,
           icon: <TagOutlined />,
         },

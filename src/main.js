@@ -10,6 +10,8 @@ import { state } from '@/store';
 
 import '@/assets';
 
+import zh_CN_List from './locales/zh_CN';
+
 import '@/styles/root.scss';
 
 import 'qg-react-components/lib/index.css';
@@ -25,7 +27,7 @@ message?.config({
 });
 
 //初始化国际化
-Intl?.init(currentLocale)?.then(async (err) => {
+Intl?.init(currentLocale, zh_CN_List)?.then(async (err) => {
   if (err) {
     message.warning('国际化初始化失败');
 

@@ -1,80 +1,33 @@
-import { Form, Input, Modal, message } from 'antd';
+import { Form, Input, Modal } from 'antd';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
-
-import { requestAddSupervise } from '@/services/abnormalProgress';
-import { updateAwardData } from '@/services/drawList';
+import React, { forwardRef, useImperativeHandle } from 'react';
 
 import styles from './index.scss';
 
-function AbnormalProgressModal(props) {
-  const { data = {}, title = '', visible = false, onSetModalStatus = () => {} } = props;
+function BannerListModal(props, ref) {
+  const { onSubmit = () => {}, title = '', visible = false, onCancel = (e) => null } = props;
 
   const [form] = Form.useForm();
 
-  function onClose() {
-    onSetModalStatus(false);
-  }
-
-  function onSubmit() {
-    form
-      .validateFields()
-      .then(async (values) => {
-        const params = { ...values };
-
-        if (params?.Id) {
-          //编辑  调用接口的方法需要自定义
-          const res = await updateAwardData(values);
-
-          if (res?.code === 0) {
-            message.success(res?.msg);
-          } else {
-            message.error(res?.msg);
-          }
-        } else {
-          //新增 调用接口的方法需要自定义
-          params?.Id && delete params['Id'];
-
-          const res = await requestAddSupervise(values);
-
-          if (res?.code === 200) {
-            message.success(res?.msg);
-          } else {
-            message.error(res?.msg);
-          }
-        }
-
-        //关闭Modal
-        onSetModalStatus(false);
-      })
-      .catch((err) => console.error(err));
-  }
-
-  useEffect(() => {
-    if (data) {
-      const rec = { ...(data || {}) };
-
-      form.setFieldsValue(rec);
-    } else {
-      form.resetFields();
-    }
-  }, [data]);
+  useImperativeHandle(ref, () => ({
+    form,
+  }));
 
   return (
     <Modal
       cancelText="取消"
       forceRender
       okText="确认"
-      onCancel={onClose}
+      onCancel={onCancel}
       onOk={onSubmit}
       open={visible}
       title={title}
     >
-      <Form className={styles.AbnormalProgressModal} form={form}>
+      <Form className={styles.BannerListModal} form={form}>
         <Form.Item hidden name="Id">
           <Input />
         </Form.Item>
-        <Form.Item label="可疑进程名：" name="Name">
+        <Form.Item label="用户名称：" name="Users">
           <Input maxLength={200} />
         </Form.Item>
       </Form>
@@ -82,11 +35,14 @@ function AbnormalProgressModal(props) {
   );
 }
 
-AbnormalProgressModal.propTypes = {
+const Index = forwardRef(BannerListModal);
+
+BannerListModal.propTypes = {
   data: PropTypes.object,
   title: PropTypes.string,
   visible: PropTypes.bool,
-  onSetModalStatus: PropTypes.func,
+  onCancel: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
-export default AbnormalProgressModal;
+export default Index;

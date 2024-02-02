@@ -1,0 +1,53 @@
+.FunctionControl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: var(--card-color);
+  border-radius: 10px;
+  box-shadow: var(--normal-box-shadom);
+
+  .FunctionControlTableHeader {
+    display: flex;
+    align-items: center;
+
+    .FunctionControlTableHeaderTitle {
+      display: flex;
+      align-items: center;
+
+      .FunctionControlTableTitle {
+        color: var(--font-2-color);
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+      }
+    }
+
+    .FunctionControlTableHeaderCom {
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  .FunctionControlTableTools {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .FunctionControlOption {
+    margin-right: 15px;
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  .FunctionControlToolIcon {
+    cursor: pointer;
+  }
+}

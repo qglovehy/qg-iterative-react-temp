@@ -1,29 +1,41 @@
 .Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: url(/public/imgs/bg.jpg) no-repeat center center;
+  //background: url(/public/imgs/bg.jpg) no-repeat center center;
+  background: radial-gradient(rgb(31, 202, 217), var(--primary-color));
   background-size: cover;
 
   .LoginTitle {
     width: 100%;
-    margin-bottom: 2vw;
     color: #fff;
-    font-weight: bold;
-    font-size: 28px;
-    letter-spacing: 3px;
+    font-size: 22px;
+    letter-spacing: 1px;
     text-align: center;
   }
 
+  .LoginLine {
+    width: 60%;
+    height: 2px;
+    margin: 20px 0;
+    background-color: var(--be-common-02-color);
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
   .LoginFormBox {
-    position: absolute;
-    top: 45%;
-    left: 50%;
     width: 25vw;
     padding: 50px 100px;
-    background: linear-gradient(to right bottom, var(--primary-color), transparent);
+    background: var(--primary-bg-color);
     border-radius: 20px;
-    transform: translate(-50%, -50%);
   }
 
   .LoginBtn {

@@ -1,0 +1,29 @@
+.HistoryBack {
+  display: flex;
+  flex-direction: column;
+  height: var(--content-height);
+  background-color: rgb(255, 255, 255);
+
+  .HistoryBackHeader {
+    width: 100%;
+    height: 30px;
+    margin: 20px 0;
+    padding: 0 10px;
+    line-height: 30px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+
+    .HistoryBackBtn {
+      .HistoryBackSpace {
+        justify-content: flex-end;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  .HistoryBackContent {
+    flex: 1;
+    overflow-y: auto;
+  }
+}

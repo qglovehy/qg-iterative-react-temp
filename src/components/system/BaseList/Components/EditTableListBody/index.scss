@@ -1,0 +1,71 @@
+.EditableIndex {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+
+  .EditableListBodyTable {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+
+    :global {
+      .ant-spin-nested-loading,
+      .ant-spin-nested-loading .ant-spin-container,
+      .ant-spin-nested-loading .ant-spin-container .ant-table,
+      .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-container {
+        height: calc(100% - 10px);
+      }
+
+      .ant-spin-nested-loading div.ant-table-body {
+        max-height: calc(100% - 30px) !important;
+        overflow-y: auto !important;
+      }
+    }
+  }
+
+  .EditableFormItem {
+    display: flex;
+    align-items: center;
+    margin-right: 6px;
+
+    .EditTableConfirmIconBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .EditTableConfirmIcon {
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .ETFormItem {
+      min-width: 100px;
+      margin-bottom: 0;
+    }
+  }
+
+  .EditableCellValueWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+
+  .EditableCellValueWrapIcon {
+    display: none;
+  }
+
+  .EditableCellValueWrap:hover {
+    padding: 4px 11px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+
+    .EditableCellValueWrapIconActive {
+      display: inline-block;
+    }
+  }
+}
