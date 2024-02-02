@@ -30,7 +30,7 @@ function Login() {
       onSetState({
         token: res?.data?.Token || 'token',
         roleType: res?.data?.Username || 'admin',
-        username: res?.data?.Nick || '123456',
+        username: res?.data?.Nick || 'admin',
       }),
     );
 
@@ -74,15 +74,16 @@ function Login() {
             rules={[
               {
                 required: true,
-                message: '请输入用户名!',
+                message: '请输入用户名 admin',
               },
             ]}
           >
             <Input
               className={styles.LoginInput}
-              placeholder="请输入用户名"
+              placeholder="请输入用户名 admin"
               prefix={<SkinFilled />}
               size="large"
+              value="admin"
             />
           </Form.Item>
 
@@ -91,16 +92,17 @@ function Login() {
             rules={[
               {
                 required: true,
-                message: '请输入密码!',
+                message: '请输入密码 123456',
               },
             ]}
           >
             <Input.Password
               autoComplete="on"
               className={styles.LoginInput}
-              placeholder="请输入密码"
+              placeholder="请输入密码 123456"
               prefix={<LockFilled />}
               size="large"
+              value="123456"
             />
           </Form.Item>
 
