@@ -1,0 +1,57 @@
+:root {
+  --header-height: 50px; /* 主界面Header高度 */
+  --footer-height: 0px; /* 主界面Footer高度 */
+  --section-article-padding: 20px; /* 内容区域内边距 */
+  --content-height: calc(100vh - 90px);
+  --normal-box-shadom: unset; /* 基础阴影 */
+
+  --primary-color: #1677ff; /* 主题颜色 */
+  --progress-success-color: #87d068; /* 渐变进度条100%颜色 */
+
+  --font-1-color: rgba(255, 255, 255, 1); /* 一级字体颜色 */
+  --font-2-color: rgba(51, 51, 51, 1); /* 二级字体颜色 */
+  --font-3-color: rgba(80, 80, 80, 1); /* 三级字体颜色 */
+  --font-4-color: rgba(0, 0, 0, 1); /* 四级字体颜色 */
+
+  --primary-font-color: rgba(0, 0, 0, 1);
+  --primary-bg-color: rgba(255, 255, 255, 1);
+  --primary-border-color: #f0f0f0;
+  --primary-antd-table-color: rgba(250, 250, 250, 1);
+  --primary-antd-table-border-radius: 0;
+  --primary-breadcrumb-nav-margin: 35px 0 5px;
+
+  --card-color: rgba(255, 255, 255, 1); /* 卡片色 */
+  --split-color: rgba(0, 0, 0, 0.08); /* 分割线颜色 */
+
+  --base-list-content-padding: 15px;
+
+  /* 通用透明颜色 */
+  --be-common-0-color: rgba(255, 255, 255, 0);
+  --be-common-001-color: rgba(255, 255, 255, 0.01);
+  --be-common-003-color: rgba(255, 255, 255, 0.03);
+  --be-common-004-color: rgba(255, 255, 255, 0.04);
+  --be-common-005-color: rgba(255, 255, 255, 0.05);
+  --be-common-007-color: rgba(255, 255, 255, 0.07);
+  --be-common-017-color: rgba(255, 255, 255, 0.17);
+  --be-common-019-color: rgba(255, 255, 255, 0.19);
+  --be-common-01-color: rgba(255, 255, 255, 0.1);
+  --be-common-012-color: rgba(255, 255, 255, 0.12);
+  --be-common-02-color: rgba(255, 255, 255, 0.2);
+  --be-common-026-color: rgba(255, 255, 255, 0.26);
+  --be-common-05-color: rgba(255, 255, 255, 0.5);
+  --be-common-052-color: rgba(255, 255, 255, 0.52);
+  --be-common-065-color: rgba(255, 255, 255, 0.65);
+  --be-common-07-color: rgba(255, 255, 255, 0.7);
+  --be-common-08-color: rgba(255, 255, 255, 0.8);
+
+  --be-common-0-01-color: rgba(0, 0, 0, 0.1);
+  --be-common-0-02-color: rgba(0, 0, 0, 0.2);
+  --be-common-0-03-color: rgba(0, 0, 0, 0.3);
+  --be-common-0-04-color: rgba(0, 0, 0, 0.4);
+  --be-common-0-048-color: rgba(0, 0, 0, 0.48);
+  --be-common-0-05-color: rgba(0, 0, 0, 0.5);
+  --be-common-0-06-color: rgba(0, 0, 0, 0.6);
+  --be-common-0-065-color: rgba(0, 0, 0, 0.65);
+  --be-common-0-07-color: rgba(0, 0, 0, 0.7);
+  --be-common-0-08-color: rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,9 @@
+/node_modules
+/src/assets
+/package-lock.json
+/package.json
+/dist
+# 其他类型文件
+*.js
+*.jsx
+*.json

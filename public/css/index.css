@@ -1,0 +1,72 @@
+/* 设置滚动条的样式
+   ::-webkit-scrollbar 滚动条整体部分，可以设置宽度啥的
+   ::-webkit-scrollbar-button 滚动条两端的按钮
+   ::-webkit-scrollbar-track 外层轨道
+   ::-webkit-scrollbar-track-piece 内层滚动槽
+   ::-webkit-scrollbar-thumb 滚动的滑块
+   ::-webkit-scrollbar-corner 边角
+   ::-webkit-resizer 定义右下角拖动块的样式
+*/
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* 滚动槽 */
+*::-webkit-scrollbar-track {
+    box-shadow: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* 滚动条滑块 */
+*::-webkit-scrollbar-thumb {
+    background-color: #dcdcdc;
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+}
+
+/* 滚动条滑块 点击 */
+*::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* 滚动条滑块 悬浮 */
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* 内层滚动槽 */
+*::-webkit-scrollbar-track-piece {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+*::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.ant-modal {
+    transform-origin: center center !important;
+}
+
+.ant-modal-footer{
+    text-align: center !important;
+}
+
+.ant-modal-footer > .ant-btn:last-child {
+    margin-inline-start: 24px !important;
+}
+
+.ant-modal-title{
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding-bottom:10px !important;
+}
+
+
+.ant-spin{
+    z-index: 10000 !important;
+}

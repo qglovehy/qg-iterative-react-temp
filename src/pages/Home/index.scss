@@ -1,0 +1,40 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100vh;
+  overflow: hidden;
+
+  .HomeSection {
+    display: flex;
+    justify-content: space-between;
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    overflow-y: auto;
+    background-color: #f0f2f5;
+    transition: 0.08s;
+
+    .HomeSectionAside {
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      overflow-y: auto;
+      border-radius: 12px;
+      transition: 0.08s;
+    }
+
+    .HomeSectionArticle {
+      flex-grow: 1;
+      box-sizing: border-box;
+      height: 100%;
+      padding: var(--section-article-padding) var(--section-article-padding)
+        var(--section-article-padding) 12px;
+      overflow: auto;
+      background-color: #f0f2f5;
+      transition: 0.08s;
+    }
+  }
+
+  .HomeFooter {
+    height: var(--footer-height);
+  }
+}

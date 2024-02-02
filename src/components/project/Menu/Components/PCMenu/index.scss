@@ -1,0 +1,30 @@
+.PCMenuIndex {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 64px);
+  margin: 20px 12px 20px 20px;
+  padding: 12px;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: var(--normal-box-shadom);
+  transition: 0.1s;
+
+  .CollapsedBtn {
+    position: absolute;
+    bottom: 45px;
+    left: 25px;
+    max-width: 95%;
+    margin: 5px 0 5px 2px;
+    font-size: 20px;
+  }
+
+  :global {
+    ul.ant-menu {
+      border: 0 !important;
+    }
+  }
+}
