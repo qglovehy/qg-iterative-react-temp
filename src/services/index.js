@@ -5,10 +5,10 @@ import { onClearLoginOutTime, setLoading } from '@/utils/pubilc';
 import { store } from '@/components/system';
 
 export const config = {
-  baseURL: 'http://1.2.3.4/',
+  baseURL: 'http://127.0.0.1/',
   wsList: {
-    docker: '1.2.3.4/',
-    api: '1.2.3.4/',
+    docker: '127.0.0.1/',
+    api: '127.0.0.1/',
   },
   timeout: 15000,
 };
