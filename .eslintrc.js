@@ -1,14 +1,21 @@
 module.exports = {
-  // extends: [require.resolve('@umijs/fabric/dist/eslint')],
+  parser: '@typescript-eslint/parser', // 定义解析器
+  extends: [require.resolve('@umijs/fabric/dist/eslint')],
   globals: {
     page: true,
     APP_ENV: true,
     NO_MOCK: true,
   },
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
+  },
+  plugins: ['react'],
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: ['./tsconfig.json'],
   },
   rules: {
     '@typescript-eslint/consistent-type-imports': 0,
