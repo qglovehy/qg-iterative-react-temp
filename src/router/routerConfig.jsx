@@ -21,8 +21,15 @@ export const IndexPage = lazy(() =>
 );
 
 /*
- * 可疑进程列表
+ * 基础查询表格
  */
 export const BannerList = lazy(() =>
   import(/* webpackChunkName: "BannerList" */ '@/pages/Home/BannerList/List'),
+);
+
+/*
+ * 可编辑查询表格
+ */
+export const EditTableList = lazy(() =>
+  import(/* webpackChunkName: "EditTableList" */ '@/pages/Home/EditTableList/List'),
 );

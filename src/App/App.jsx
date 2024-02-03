@@ -8,8 +8,7 @@ import 'dayjs/locale/zh-cn';
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { ws } from '@/utils/webSocket';
-
+// import { ws } from '@/utils/webSocket';
 import { prevState } from '@/store/init';
 
 import Routers from '@/router/index';
@@ -50,17 +49,17 @@ function AppIndex() {
     dispatch(onResetState());
     dispatch(onSetState({ ...prevState }));
 
+    //初始化字典项
+    initDictData(require.context('@/dictionary', false, /\.js$/)).then();
+
     if (token) {
       // 设置长链接
-      ws.initWebSocket();
+      // ws.initWebSocket();
 
-      //初始化字典项
-      (async () => initDictData(require.context('@/dictionary', false, /\.js$/)))();
-
-      navigate('/');
+      navigate('/index');
 
       //定时清除控制台
-      setInterval(console.clear, 120000);
+      // setInterval(console.clear, 120000);
     } else {
       //清空字典项
       dispatch(onSetState({ dict: [] }));

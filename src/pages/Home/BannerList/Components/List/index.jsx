@@ -162,8 +162,6 @@ function BannerList() {
   //关闭编辑弹窗
   function onBannerListEditCancel() {
     setSaveVisible(false);
-
-    ref.current?.onSearch?.();
   }
 
   //打开编辑弹窗

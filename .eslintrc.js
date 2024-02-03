@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser', // 定义解析器
-  extends: [require.resolve('@umijs/fabric/dist/eslint')],
+  // extends: [require.resolve('@umijs/fabric/dist/eslint')],
   globals: {
     page: true,
     APP_ENV: true,

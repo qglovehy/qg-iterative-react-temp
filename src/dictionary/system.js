@@ -1,6 +1,7 @@
 // import { requestZoneList } from '@/services/server';
 
 const Dict = {
+  DictPublicMap: {},
   //(静态字典、动态字典正反向Map自动生成 所以不需要手动添加)
   //静态字典
   DictStatic: {

@@ -1,7 +1,7 @@
 import { HomeOutlined, TagOutlined } from '@ant-design/icons';
 import React from 'react';
 
-import { BannerList, HomeIndex, IndexPage, Login } from './routerConfig';
+import { BannerList, EditTableList, HomeIndex, IndexPage, Login } from './routerConfig';
 
 function OptionRouters() {
   return [
@@ -29,6 +29,13 @@ function OptionRouters() {
           path: '/bannerList',
           label: '基础查询表格',
           element: <BannerList />,
+          icon: <TagOutlined />,
+        },
+        {
+          id: 'EditTablePage',
+          path: '/editTablePage',
+          label: '可编辑查询表格',
+          element: <EditTableList />,
           icon: <TagOutlined />,
         },
       ],
