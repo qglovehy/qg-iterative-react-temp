@@ -13,7 +13,6 @@ import '@/assets';
 
 import zh_CN_List from './locales/zh_CN';
 
-import '@/components/system/lib/index.css';
 import '@/styles/root.scss';
 
 const currentLocale = window.localStorage.getItem('qg-iterative-react-intl') || 'zh_CN';

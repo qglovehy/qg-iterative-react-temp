@@ -9,7 +9,6 @@ import '@/styles/root.scss';
 export { Provider, useDispatch, useSelector } from 'react-redux';
 export { PersistGate } from 'redux-persist/lib/integration/react';
 export { store, persistence } from '@/store';
-export { IRootStateProps } from '@/store/types';
 export {
   default as QGIterativeReducer,
   onResetState,

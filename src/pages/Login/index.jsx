@@ -1,5 +1,5 @@
 import { LockFilled, SkinFilled } from '@ant-design/icons';
-import { Form, Input, message } from 'antd';
+import { Form, Input } from 'antd';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
