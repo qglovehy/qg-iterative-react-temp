@@ -4,7 +4,8 @@
   "description": "QG-REACT演示项目",
   "main": "main.js",
   "scripts": {
-    "qgbuild": "qgtools buildapp",
+    "qgbuild": "rimraf ./dist && cross-env NODE_ENV=production webpack --config ./config/webpack.pro.js",
+    "qgbuild1": "qgtools buildapp",
     "qgstart": "qgtools startapp",
     "upgrade:qgtools": "yarn upgrade qgtools",
     "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx ",
