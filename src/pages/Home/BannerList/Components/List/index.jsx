@@ -82,6 +82,8 @@ function BannerList() {
 
   //查询列表数据
   async function requestListAllData(params = {}, callback) {
+    message.success('触发查询' + JSON.stringify(params));
+
     const res = await requestGetSuperviseUser(params);
 
     if (res?.code !== 200) {
@@ -184,7 +186,7 @@ function BannerList() {
         columns={columns.current} //表头
         optionButtonGroup={optionButtonGroup.current} //表头上方操作按钮
         ref={ref}
-        rowSelection={false} // 禁用列表多选 默认启用
+        rowSelection={false} // 禁用列表多选
         searchParamList={searchData.current}
         serviceFunc={requestListAllData} // 请求数据方法
         // otherParams={{ showHeader: false }} //其他 antd 表格属性

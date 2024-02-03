@@ -5,7 +5,7 @@ import React, { forwardRef, useImperativeHandle } from 'react';
 import styles from './index.scss';
 
 function BannerListModal(props, ref) {
-  const { onSubmit = () => {}, title = '', visible = false, onCancel = (e) => null } = props;
+  const { onSubmit = () => null, title = '', visible = false, onCancel = () => null } = props;
 
   const [form] = Form.useForm();
 

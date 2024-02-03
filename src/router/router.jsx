@@ -27,7 +27,7 @@ function OptionRouters() {
         {
           id: 'BannerList',
           path: '/bannerList',
-          label: '一套增删改查',
+          label: '基础查询表格',
           element: <BannerList />,
           icon: <TagOutlined />,
         },
