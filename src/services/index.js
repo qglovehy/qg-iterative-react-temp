@@ -4,10 +4,10 @@ import { store } from 'qg-react-components';
 import { onClearLoginOutTime, setLoading } from '@/utils/pubilc';
 
 export const config = {
-  baseURL: 'http://103.117.121.53/',
+  baseURL: 'http://1.2.3.4/',
   wsList: {
-    docker: '192.168.1.102:8881/',
-    api: '103.117.121.53/',
+    docker: '1.2.3.4/',
+    api: '1.2.3.4/',
   },
   timeout: 15000,
 };
