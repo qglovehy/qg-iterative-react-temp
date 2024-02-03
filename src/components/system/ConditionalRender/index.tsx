@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
-import { IConditionalRenderProps, IConditionalRenderShowProps } from './types';
+import type { IConditionalRenderProps, IConditionalRenderShowProps } from './types';
 
 //@ts-ignore
 import styles from './index.scss';

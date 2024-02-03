@@ -1,11 +1,17 @@
 module.exports = {
-  extends: [require.resolve('@umijs/fabric/dist/eslint')],
+  // extends: [require.resolve('@umijs/fabric/dist/eslint')],
   globals: {
     page: true,
     APP_ENV: true,
     NO_MOCK: true,
   },
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    project: './tsconfig.json',
+  },
   rules: {
+    '@typescript-eslint/consistent-type-imports': 0,
     // 'prettier/prettier': 0,
     semi: 2, // 强制使用分号
     quotes: [1, 'single'], // 单引号
