@@ -96,6 +96,14 @@ module.exports = {
   optimization: {
     splitChunks: false,
   },
+  // 选择性地控制要显示的信息类型
+  stats: {
+    assets: true,
+    colors: true,
+    errors: true,
+    errorDetails: true,
+    modules: false,
+  },
   module: {
     rules: [
       // 处理css
