@@ -1,7 +1,8 @@
 import { message } from 'antd';
-import { store } from 'qg-react-components';
 
 import { onClearLoginOutTime, setLoading } from '@/utils/pubilc';
+
+import { store } from '@/components/system';
 
 export const config = {
   baseURL: 'http://1.2.3.4/',

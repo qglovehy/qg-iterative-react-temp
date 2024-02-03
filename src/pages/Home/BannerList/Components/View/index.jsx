@@ -1,7 +1,8 @@
 import { Modal } from 'antd';
 import PropTypes from 'prop-types';
-import { Intl } from 'qg-react-components';
 import React from 'react';
+
+import { Intl } from '@/components/system';
 
 import styles from './index.scss';
 

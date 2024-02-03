@@ -1,12 +1,12 @@
 import { LockFilled, SkinFilled } from '@ant-design/icons';
 import { Form, Input, message } from 'antd';
-import { ProtectedButton, onSetState, useDispatch } from 'qg-react-components';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { requestLogin } from '@/services/login';
 
 import LottieAnimation from '@/components/project/LottieAnimation';
+import { ProtectedButton, onSetState, useDispatch } from '@/components/system';
 
 import lotty1 from '@/assets/lotty/lot1.json';
 

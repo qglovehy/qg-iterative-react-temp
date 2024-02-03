@@ -1,0 +1,13 @@
+.DriverGroup {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  span {
+    color: var(--font-3-color);
+  }
+}
+
+.DividerHorizontal {
+  display: flex;
+}

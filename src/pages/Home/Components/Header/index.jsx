@@ -1,5 +1,10 @@
 import { DownOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { onClearLoginOutTime } from '@/utils/pubilc';
+
 import {
   ConditionalRender,
   Intl,
@@ -11,11 +16,7 @@ import {
   useDispatch,
   useMediaQuery,
   useSelector,
-} from 'qg-react-components';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { onClearLoginOutTime } from '@/utils/pubilc';
+} from '@/components/system';
 
 import styles from './index.scss';
 

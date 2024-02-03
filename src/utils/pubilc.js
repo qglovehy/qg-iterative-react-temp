@@ -1,6 +1,6 @@
-import { onSetState, store } from 'qg-react-components';
-
 import { ws } from '@/utils/webSocket';
+
+import { onSetState, store } from '@/components/system';
 
 //处理token过期问题 退出登录
 export const onClearLoginOutTime = () => {

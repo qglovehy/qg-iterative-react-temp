@@ -1,10 +1,11 @@
 import { Modal } from 'antd';
 import dayjs from 'dayjs';
-import { onSetState, store } from 'qg-react-components';
 
 import protobuf from '@/utils/proto/proto';
 
 import { config } from '@/services';
+
+import { onSetState, store } from '@/components/system';
 
 export const ws = {
   wsMessageObj: {},

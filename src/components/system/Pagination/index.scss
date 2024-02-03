@@ -1,0 +1,46 @@
+.PaginationIndex {
+  color: var(--primary-font-color);
+
+  :global {
+    .anticon-left,
+    .anticon-right {
+      color: var(--primary-font-color);
+    }
+
+    .ant-pagination-options-quick-jumper input {
+      color: var(--primary-font-color);
+      background-color: transparent;
+    }
+
+    .ant-select-selector {
+      color: var(--primary-font-color);
+      background-color: var(--primary-bg-color) !important;
+    }
+
+    .ant-select-arrow {
+      color: var(--primary-font-color);
+    }
+
+    .ant-pagination-item-ellipsis {
+      color: var(--primary-font-color) !important;
+    }
+
+    .ant-pagination-item {
+      color: var(--primary-font-color);
+      background-color: var(--primary-bg-color);
+
+      a {
+        color: var(--primary-font-color);
+      }
+    }
+
+    .ant-pagination-item-active {
+      color: var(--primary-font-color);
+      background-color: var(--primary-bg-color);
+
+      a {
+        color: var(--primary-font-color);
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import { Drawer, Menu } from 'antd';
 import PropTypes from 'prop-types';
-import { onSetState, useDispatch, useSelector } from 'qg-react-components';
 import React from 'react';
+
+import { onSetState, useDispatch, useSelector } from '@/components/system';
 
 import styles from './index.scss';
 

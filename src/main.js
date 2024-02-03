@@ -1,20 +1,20 @@
 import App from '@/App/App';
 
 import { message } from 'antd';
-import { Intl, PersistGate, Provider, onSetState, persistence, store } from 'qg-react-components';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 
-import { state } from '@/store';
+import { state } from '@/store/init';
+
+import { Intl, PersistGate, Provider, onSetState, persistence, store } from '@/components/system';
 
 import '@/assets';
 
 import zh_CN_List from './locales/zh_CN';
 
+import '@/components/system/lib/index.css';
 import '@/styles/root.scss';
-
-import 'qg-react-components/lib/index.css';
 
 const currentLocale = window.localStorage.getItem('qg-iterative-react-intl') || 'zh_CN';
 

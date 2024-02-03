@@ -5,21 +5,22 @@ import zh_CN from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es-us';
 import 'dayjs/locale/zh-cn';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { ws } from '@/utils/webSocket';
+
+import { prevState } from '@/store/init';
+
+import Routers from '@/router/index';
+
 import {
   initDictData,
   onResetState,
   onSetState,
   useDispatch,
   useSelector,
-} from 'qg-react-components';
-import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-
-import { ws } from '@/utils/webSocket';
-
-import { prevState } from '@/store';
-
-import Routers from '@/router/index';
+} from '@/components/system';
 
 //当前语言
 const currentLocale = window.localStorage.getItem('qg-iterative-react-intl') || 'zh_CN';

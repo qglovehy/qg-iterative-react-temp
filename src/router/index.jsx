@@ -1,6 +1,7 @@
-import { UnNormalCase403, UnNormalCase404, useSelector } from 'qg-react-components';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import { UnNormalCase403, UnNormalCase404, useSelector } from '@/components/system';
 
 import OptionRouter from './router';
 

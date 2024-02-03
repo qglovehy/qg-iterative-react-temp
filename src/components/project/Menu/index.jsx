@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import { ConditionalRender, useMediaQuery, useSelector } from 'qg-react-components';
 import React, { memo, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import OptionRouter from '@/router/router';
+
+import { ConditionalRender, useMediaQuery, useSelector } from '@/components/system';
 
 //响应式切换
 import PADMenu from './Components/PADMenu';

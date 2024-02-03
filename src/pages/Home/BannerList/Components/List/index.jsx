@@ -1,9 +1,10 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Form, Input, Modal, message } from 'antd';
-import { BaseList, Intl, ProtectedButton } from 'qg-react-components';
 import React, { useRef, useState } from 'react';
 
 import { requestClearSuperviseUser, requestGetSuperviseUser } from '@/services/black';
+
+import { BaseList, Intl, ProtectedButton } from '@/components/system';
 
 import BannerListSaveOrUpdateWrap from '../SaveOrUpdate/wrap';
 import BannerListViewModal from '../View';
