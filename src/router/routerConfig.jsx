@@ -1,7 +1,9 @@
 import { lazy } from 'react';
 
+import ForgetPasswordIndex from '@/pages/ForgetPassword';
 import Home from '@/pages/Home';
 import LoginIndex from '@/pages/Login';
+import RegisterIndex from '@/pages/Register';
 
 /*
  * 首页
@@ -14,24 +16,20 @@ export const HomeIndex = Home;
 export const Login = LoginIndex;
 
 /*
- * 首页
- */
-export const IndexPage = lazy(() =>
-  import(/* webpackChunkName: "IndexPage" */ '@/pages/Home/IndexPage/index'),
-);
-
-/*
  * 注册
  */
-export const Register = lazy(() =>
-  import(/* webpackChunkName: "Register" */ '@/pages/Register/index'),
-);
+export const Register = RegisterIndex;
 
 /*
  * 忘记密码
  */
-export const ForgetPassword = lazy(() =>
-  import(/* webpackChunkName: "ForgetPassword" */ '@/pages/ForgetPassword/index'),
+export const ForgetPassword = ForgetPasswordIndex;
+
+/*
+ * 首页
+ */
+export const IndexPage = lazy(() =>
+  import(/* webpackChunkName: "IndexPage" */ '@/pages/Home/IndexPage/index'),
 );
 
 /*

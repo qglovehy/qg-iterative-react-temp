@@ -17,19 +17,17 @@ function ForgetPassword() {
 
   //登录按钮
   const onFinish = async (values) => {
-    startTransition(async () => {
-      const res = await requestForgetPassword(values);
+    const res = await requestForgetPassword(values);
 
-      if (res?.code !== 200) {
-        message.error(res?.msg);
+    if (res?.code !== 200) {
+      message.error(res?.msg);
 
-        return;
-      }
+      return;
+    }
 
-      message.success(res.msg);
+    message.success(res.msg);
 
-      navigate('/');
-    });
+    navigate('/');
   };
 
   //表单输入错误事件

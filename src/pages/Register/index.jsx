@@ -16,18 +16,16 @@ function Register() {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
-    startTransition(async () => {
-      const res = await requestRegister(values);
+    const res = await requestRegister(values);
 
-      if (res?.code !== 200) {
-        message.error(res?.msg);
+    if (res?.code !== 200) {
+      message.error(res?.msg);
 
-        return;
-      }
+      return;
+    }
 
-      message.success(res.msg);
-      navigate('/login');
-    });
+    message.success(res.msg);
+    navigate('/login');
   };
 
   //表单输入错误事件

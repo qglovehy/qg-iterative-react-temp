@@ -65,7 +65,7 @@ function MenuIndex(props) {
 
   useEffect(() => {
     //从二级路由开始渲染菜单项
-    setItems(getRouteJson(OptionRouter[1].children)?.filter(Boolean));
+    setItems(getRouteJson(OptionRouter[0].children)?.filter(Boolean));
   }, []);
 
   return (

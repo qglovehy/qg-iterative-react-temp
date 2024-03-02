@@ -14,24 +14,6 @@ import {
 function OptionRouters() {
   return [
     {
-      id: 'login',
-      path: '/login',
-      label: '登录页',
-      element: <Login />,
-    },
-    {
-      id: 'register',
-      path: '/register',
-      label: '注册',
-      element: <Register />,
-    },
-    {
-      id: 'forgetpassword',
-      path: '/forgetpassword',
-      label: '忘记密码',
-      element: <ForgetPassword />,
-    },
-    {
       id: 'app',
       path: '/',
       label: '入口',
@@ -59,6 +41,24 @@ function OptionRouters() {
           icon: <TagOutlined />,
         },
       ],
+    },
+    {
+      id: 'login',
+      path: '/login',
+      label: '登录页',
+      element: <Login />,
+    },
+    {
+      id: 'register',
+      path: '/register',
+      label: '注册',
+      element: <Register />,
+    },
+    {
+      id: 'forgetpassword',
+      path: '/forgetpassword',
+      label: '忘记密码',
+      element: <ForgetPassword />,
     },
   ];
 }
