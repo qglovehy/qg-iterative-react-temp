@@ -1,0 +1,17 @@
+.PADMenuIndex {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 256px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  transition: 0.1s;
+
+  :global {
+    .ant-drawer-body {
+      padding: 0;
+    }
+  }
+}

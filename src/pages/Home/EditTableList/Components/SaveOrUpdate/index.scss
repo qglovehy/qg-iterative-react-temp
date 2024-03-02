@@ -1,0 +1,13 @@
+.UserProcessListModalBox {
+  width: auto !important;
+}
+
+.UserProcessListModal {
+  width: 1100px;
+
+  :global {
+    .ant-form-item-label {
+      width: 80px;
+    }
+  }
+}

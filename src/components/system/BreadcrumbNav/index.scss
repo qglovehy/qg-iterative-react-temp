@@ -1,0 +1,17 @@
+.BreadcrumbNav {
+  display: flex;
+  align-items: center;
+  margin: var(--primary-breadcrumb-nav-margin);
+  color: #fff;
+
+  .BreadcrumbNavItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .BreadcrumbNavTitle {
+      color: #ffd100;
+      textdecoration: underline #ffd100;
+    }
+  }
+}
