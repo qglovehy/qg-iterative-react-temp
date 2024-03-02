@@ -20,22 +20,16 @@ function OptionRouters() {
       element: <Login />,
     },
     {
-      id: 'login',
+      id: 'register',
       path: '/register',
       label: '注册',
       element: <Register />,
     },
     {
-      id: 'login',
+      id: 'forgetpassword',
       path: '/forgetpassword',
       label: '忘记密码',
       element: <ForgetPassword />,
-    },
-    {
-      id: 'login',
-      path: '/login',
-      label: '登录页',
-      element: <Login />,
     },
     {
       id: 'app',

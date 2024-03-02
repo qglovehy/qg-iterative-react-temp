@@ -5,7 +5,7 @@ import { onClearLoginOutTime, setLoading } from '@/utils/pubilc';
 import { store } from '@/components/system';
 
 export const config = {
-  baseURL: 'http://localhost:8000/',
+  baseURL: 'http://103.117.121.53:8000/',
   wsList: {
     docker: '127.0.0.1/',
     api: '127.0.0.1/',

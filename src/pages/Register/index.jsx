@@ -1,23 +1,24 @@
 import { LockFilled, SkinFilled } from '@ant-design/icons';
 import { Form, Input, message } from 'antd';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { requestRegister } from '@/services/login';
 
 import LottieAnimation from '@/components/project/LottieAnimation';
-import { ProtectedButton, onSetState, useDispatch } from '@/components/system';
+import { ProtectedButton } from '@/components/system';
 
 import lotty1 from '@/assets/lotty/lot1.json';
 
 import styles from './index.scss';
 
 function Register() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   //登录按钮
   const onFinish = async (values) => {
+    event.preventDefault();
+
     const res = await requestRegister(values);
 
     if (res?.code !== 200) {
@@ -26,39 +27,16 @@ function Register() {
       return;
     }
 
-    dispatch(
-      onSetState({
-        token: res?.data?.token || 'token',
-        roleType: res?.data?.username || 'admin',
-        username: res?.data?.username || 'admin',
-      }),
-    );
+    message.success(res.msg);
 
-    navigate('/');
+    navigate('/login');
   };
 
   //表单输入错误事件
   const onFinishFailed = (errorInfo) => console.log('Failed:', errorInfo);
 
-  //注册
-  const onJumpRegister = () => navigate('/register');
-
-  //忘记密码
-  const onJumpForgectPassword = () => navigate('/updatepassword');
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location?.hash?.split('?')[1]);
-
-    const username = params.get('username');
-    const password = params.get('password');
-
-    if (username && password) {
-      onFinish({
-        username,
-        password,
-      });
-    }
-  }, []);
+  //去登录
+  const onJumpLogin = () => navigate('/login');
 
   return (
     <div className={styles.Register}>
@@ -66,29 +44,28 @@ function Register() {
       <LottieAnimation animationData={lotty1} />
 
       {/*标题*/}
-      <div className={styles.RegisterTitle}>欢迎进入QG-REACT演示项目</div>
+      <div className={styles.RegisterTitle}>QG-REACT演示项目-注册</div>
 
       {/*分割线*/}
       <div className={styles.RegisterLine}></div>
 
-      {/*登录表单*/}
+      {/*注册表单*/}
       <div className={styles.RegisterFormBox}>
-        <Form autoComplete="off" name="basic" onFinish={onFinish} onFinishFailed={onFinishFailed}>
+        <Form autoComplete="off" name="reg" onFinish={onFinish} onFinishFailed={onFinishFailed}>
           <Form.Item
             name="username"
             rules={[
               {
                 required: true,
-                message: '请输入用户名 admin',
+                message: '请输入用户名',
               },
             ]}
           >
             <Input
               className={styles.RegisterInput}
-              placeholder="请输入用户名 admin"
+              placeholder="请输入用户名"
               prefix={<SkinFilled />}
               size="large"
-              value="admin"
             />
           </Form.Item>
 
@@ -97,32 +74,30 @@ function Register() {
             rules={[
               {
                 required: true,
-                message: '请输入密码 123456',
+                message: '请输入密码',
               },
             ]}
           >
             <Input.Password
               autoComplete="on"
               className={styles.RegisterInput}
-              placeholder="请输入密码 123456"
+              placeholder="请输入密码"
               prefix={<LockFilled />}
               size="large"
-              value="123456"
             />
           </Form.Item>
 
           <Form.Item>
             <ProtectedButton className={styles.RegisterBtn} htmlType="submit" type="primary">
-              登录
+              注册
             </ProtectedButton>
           </Form.Item>
         </Form>
 
         <div className={styles.RegisterFormBoxOther}>
-          <ProtectedButton onClick={onJumpRegister} type="link">
-            注册
+          <ProtectedButton onClick={onJumpLogin} type="link">
+            去登录
           </ProtectedButton>
-          <ProtectedButton type="link">忘记密码</ProtectedButton>
         </div>
       </div>
     </div>

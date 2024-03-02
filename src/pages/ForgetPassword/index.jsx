@@ -18,6 +18,8 @@ function ForgetPassword() {
 
   //登录按钮
   const onFinish = async (values) => {
+    event.preventDefault();
+
     const res = await requestForgetPassword(values);
 
     if (res?.code !== 200) {
@@ -26,13 +28,7 @@ function ForgetPassword() {
       return;
     }
 
-    dispatch(
-      onSetState({
-        token: res?.data?.token || 'token',
-        roleType: res?.data?.username || 'admin',
-        username: res?.data?.username || 'admin',
-      }),
-    );
+    message.success(res.msg);
 
     navigate('/');
   };
@@ -40,11 +36,8 @@ function ForgetPassword() {
   //表单输入错误事件
   const onFinishFailed = (errorInfo) => console.log('Failed:', errorInfo);
 
-  //注册
-  const onJumpRegister = () => navigate('/register');
-
-  //忘记密码
-  const onJumpForgectPassword = () => navigate('/updatepassword');
+  //登录
+  const onJumpLogin = () => navigate('/login');
 
   useEffect(() => {
     const params = new URLSearchParams(window.location?.hash?.split('?')[1]);
@@ -66,7 +59,7 @@ function ForgetPassword() {
       <LottieAnimation animationData={lotty1} />
 
       {/*标题*/}
-      <div className={styles.ForgetPasswordTitle}>欢迎进入QG-REACT演示项目</div>
+      <div className={styles.ForgetPasswordTitle}>QG-REACT演示项目-修改密码</div>
 
       {/*分割线*/}
       <div className={styles.ForgetPasswordLine}></div>
@@ -79,16 +72,15 @@ function ForgetPassword() {
             rules={[
               {
                 required: true,
-                message: '请输入用户名 admin',
+                message: '请输入用户名 ',
               },
             ]}
           >
             <Input
               className={styles.ForgetPasswordInput}
-              placeholder="请输入用户名 admin"
+              placeholder="请输入用户名 "
               prefix={<SkinFilled />}
               size="large"
-              value="admin"
             />
           </Form.Item>
 
@@ -97,14 +89,14 @@ function ForgetPassword() {
             rules={[
               {
                 required: true,
-                message: '请输入密码 123456',
+                message: '请输入密码 ',
               },
             ]}
           >
             <Input.Password
               autoComplete="on"
               className={styles.ForgetPasswordInput}
-              placeholder="请输入密码 123456"
+              placeholder="请输入密码 "
               prefix={<LockFilled />}
               size="large"
               value="123456"
@@ -119,10 +111,9 @@ function ForgetPassword() {
         </Form>
 
         <div className={styles.ForgetPasswordFormBoxOther}>
-          <ProtectedButton onClick={onJumpRegister} type="link">
-            注册
+          <ProtectedButton onClick={onJumpLogin} type="link">
+            去登录
           </ProtectedButton>
-          <ProtectedButton type="link">忘记密码</ProtectedButton>
         </div>
       </div>
     </div>
