@@ -6,15 +6,9 @@ interface IPayloadProps {
 }
 
 const value = {
-<<<<<<< HEAD
   dict: null, //字典
 
   token: null,
-=======
-  currentIntl: 'zh_CN', //国际化
-
-  dict: null, //字典
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 
   antdTheme: {
     token: {
@@ -34,11 +28,8 @@ const value = {
   projectTheme: {
     colorPrimary: '#1677ff',
   }, //自定义主题
-<<<<<<< HEAD
   componentSize: 'middle', //组件尺寸
   direction: 'ltr', //组件位置
-=======
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 };
 
 export const counter = createSlice({
@@ -64,12 +55,9 @@ export const counter = createSlice({
     //设置主题
     setAntdTheme: (state: any, action: IPayloadProps) => {
       const colorPrimary = action.payload?.colorPrimary;
-<<<<<<< HEAD
       const borderRadius = action.payload?.borderRadius;
       const componentSize = action.payload?.componentSize;
       const direction = action.payload?.direction;
-=======
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 
       if (colorPrimary) {
         state.value.antdTheme.token.colorPrimary = colorPrimary;
@@ -77,7 +65,6 @@ export const counter = createSlice({
 
         state.value.projectTheme.colorPrimary = colorPrimary;
       }
-<<<<<<< HEAD
 
       if (borderRadius) {
         state.value.antdTheme.token.borderRadius = borderRadius;
@@ -90,8 +77,6 @@ export const counter = createSlice({
       if (direction) {
         state.value.direction = direction;
       }
-=======
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     },
   },
 });

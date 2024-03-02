@@ -5,7 +5,6 @@ const Dict = {
   //(静态字典、动态字典正反向Map自动生成 所以不需要手动添加)
   //静态字典
   DictStatic: {
-<<<<<<< HEAD
     //组件方向
     SystemDirection: () => [
       {
@@ -80,8 +79,6 @@ const Dict = {
         color: '#722ed1',
       },
     ],
-=======
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     //性别
     SystemSex: () => [
       {

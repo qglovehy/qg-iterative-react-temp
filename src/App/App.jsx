@@ -1,9 +1,5 @@
 import { HappyProvider } from '@ant-design/happy-work-theme';
-<<<<<<< HEAD
 import { ConfigProvider, Spin, message as messageApi } from 'antd';
-=======
-import { ConfigProvider, Spin } from 'antd';
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 import en_US from 'antd/locale/en_US';
 import zh_CN from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
@@ -18,27 +14,17 @@ import { prevState } from '@/store/init';
 import Routers from '@/router/index';
 
 import {
-<<<<<<< HEAD
   MessageContext,
   initDictData,
   onResetState,
   onSetState,
   store,
-=======
-  initDictData,
-  onResetState,
-  onSetState,
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   useDispatch,
   useSelector,
 } from '@/components/system';
 
 //当前语言
-<<<<<<< HEAD
 const currentLocale = localStorage.getItem('qg-iterative-react-locale') || 'zh_CN';
-=======
-const currentLocale = window.localStorage.getItem('qg-iterative-react-intl') || 'zh_CN';
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 
 //预设的国际化文件
 const locales = {
@@ -54,16 +40,12 @@ if (currentLocale === 'zh_CN') {
 }
 
 function AppIndex() {
-<<<<<<< HEAD
   const [message, contextHolder] = messageApi.useMessage();
 
-=======
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
 
-<<<<<<< HEAD
   const { loading, token, antdTheme, componentSize, direction } = useSelector(
     (state) => state.counter.value,
   );
@@ -71,13 +53,6 @@ function AppIndex() {
   useEffect(() => {
     //初始化预设状态
     // dispatch(onResetState());
-=======
-  const { loading, token, antdTheme } = useSelector((state) => state.counter.value);
-
-  useEffect(() => {
-    //初始化预设状态
-    dispatch(onResetState());
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     dispatch(onSetState({ ...prevState }));
 
     //初始化字典项
@@ -105,7 +80,6 @@ function AppIndex() {
   }, [location]);
 
   return (
-<<<<<<< HEAD
     <ConfigProvider
       componentSize={componentSize}
       direction={direction}
@@ -131,14 +105,6 @@ function AppIndex() {
           </HappyProvider>
         </Spin>
       </MessageContext.Provider>
-=======
-    <ConfigProvider locale={locales[currentLocale]} theme={antdTheme}>
-      <Spin spinning={loading} style={{ top: '16%' }}>
-        <HappyProvider>
-          <Routers />
-        </HappyProvider>
-      </Spin>
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     </ConfigProvider>
   );
 }

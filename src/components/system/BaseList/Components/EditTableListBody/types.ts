@@ -17,11 +17,7 @@ export interface IEditableCellProps {
 
 export interface IEditTableListBodyProps {
   onRowChange?: (selectedRowKeys: any[], selectedRows: any[]) => void;
-<<<<<<< HEAD
   handleSaveCallBack?: (a: any) => void;
-=======
-  handleSaveCallBack?: () => void;
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   columns?: any[];
   dataSource?: any[];
   selectedRows?: any[];

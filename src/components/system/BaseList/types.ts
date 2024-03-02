@@ -1,10 +1,6 @@
 export interface IBaseListProps {
   isEditTable: boolean;
-<<<<<<< HEAD
   handleSaveCallBack: (a: any) => void;
-=======
-  handleSaveCallBack: () => void;
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   serviceFunc: (a: any, b: any) => void;
   functionControlTableTitle: string;
   columns: any[]; // 这里可以指定列的类型，比如 [string, number, boolean] 等

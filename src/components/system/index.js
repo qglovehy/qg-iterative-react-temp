@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import { createContext } from 'react';
 
-=======
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 //组件库内置雪碧图svg
 import '@/assets';
 
@@ -55,9 +52,6 @@ export { default as UnNormalCase500 } from './UnNormalCase/Error_500';
 
 //WangEditor
 export { default as WangEditorFrame } from './WangEditorFrame';
-<<<<<<< HEAD
 
 // 创建一个Context
 export const MessageContext = createContext(null);
-=======
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d

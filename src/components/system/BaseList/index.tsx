@@ -56,11 +56,7 @@ const BaseList: ForwardRefRenderFunction<unknown, IBaseListProps> = (
     selectedRows: [], //多选整行
     selectedRowKeys: [], //多选key
     Condition: {}, //查询条件存储
-<<<<<<< HEAD
     rowSelection, //多选配置
-=======
-    rowSelection,
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     current: 1, //当前页
     pageSize: 10, //每页条数
     total: 1, //总数

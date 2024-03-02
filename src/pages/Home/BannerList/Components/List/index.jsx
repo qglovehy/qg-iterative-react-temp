@@ -1,19 +1,10 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-<<<<<<< HEAD
 import { Form, Input, Modal } from 'antd';
 import React, { useContext, useRef, useState } from 'react';
 
 import { requestClearSuperviseUser, requestGetSuperviseUser } from '@/services/black';
 
 import { BaseList, Intl, MessageContext, ProtectedButton } from '@/components/system';
-=======
-import { Form, Input, Modal, message } from 'antd';
-import React, { useRef, useState } from 'react';
-
-import { requestClearSuperviseUser, requestGetSuperviseUser } from '@/services/black';
-
-import { BaseList, Intl, ProtectedButton } from '@/components/system';
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 
 import BannerListSaveOrUpdateWrap from '../SaveOrUpdate/wrap';
 import BannerListViewModal from '../View';
@@ -21,11 +12,8 @@ import BannerListViewModal from '../View';
 import styles from './index.scss';
 
 function BannerList() {
-<<<<<<< HEAD
   const message = useContext(MessageContext);
 
-=======
->>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   //执行子组件 (列表组件) 方法
   const ref = useRef();
 
