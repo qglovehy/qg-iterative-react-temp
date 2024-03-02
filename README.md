@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 > 为了不断地完善、优化、迭代组件库，所以将代码全部开源。
 > 
 > 本地调试：`npm run start`
@@ -18,6 +19,8 @@ https://github.com/qglovehy/qg-iterative-react-coms.git
 
 自定义构建工具源码：
 https://github.com/qglovehy/qg-iterative-web-build.git
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 
 
 #### Git 提交规范

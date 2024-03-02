@@ -17,7 +17,10 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.json'],
   },
+<<<<<<< HEAD
   ignorePatterns: ['config/**'],
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   rules: {
     '@typescript-eslint/consistent-type-imports': 0,
     // 'prettier/prettier': 0,

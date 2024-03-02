@@ -15,6 +15,11 @@ import zh_CN_List from './locales/zh_CN';
 
 import '@/styles/root.scss';
 
+<<<<<<< HEAD
+=======
+const currentLocale = window.localStorage.getItem('qg-iterative-react-intl') || 'zh_CN';
+
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 //配置antd 弹窗
 message?.config({
   top: 10,
@@ -24,7 +29,11 @@ message?.config({
 });
 
 //初始化国际化
+<<<<<<< HEAD
 Intl?.init(zh_CN_List)?.then(async (err) => {
+=======
+Intl?.init(currentLocale, zh_CN_List)?.then(async (err) => {
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   if (err) {
     message.warning('国际化初始化失败');
 

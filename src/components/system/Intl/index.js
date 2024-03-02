@@ -1,7 +1,10 @@
 import intl from 'react-intl-universal';
 
+<<<<<<< HEAD
 import { store } from '@/components/system';
 
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 import en_US_List from './locales/en_US';
 import zh_CN_List from './locales/zh_CN';
 
@@ -28,9 +31,13 @@ let initKey = {};
 
 const Intl = {
   //初始化国际化
+<<<<<<< HEAD
   init: (zhList = []) => {
     const currentLocale = localStorage.getItem('qg-iterative-react-locale') || 'zh_CN';
 
+=======
+  init: (currentLocale = '', zhList = []) => {
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     //初始化国际化参数-增强代码可读性
     initKey = {};
 

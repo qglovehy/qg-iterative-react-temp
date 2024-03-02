@@ -1,6 +1,7 @@
 import { HomeOutlined, TagOutlined } from '@ant-design/icons';
 import React from 'react';
 
+<<<<<<< HEAD
 import {
   BannerList,
   EditTableList,
@@ -10,6 +11,9 @@ import {
   Login,
   Register,
 } from './routerConfig';
+=======
+import { BannerList, EditTableList, HomeIndex, IndexPage, Login } from './routerConfig';
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 
 function OptionRouters() {
   return [
@@ -20,6 +24,7 @@ function OptionRouters() {
       element: <Login />,
     },
     {
+<<<<<<< HEAD
       id: 'login',
       path: '/register',
       label: '注册',
@@ -38,6 +43,8 @@ function OptionRouters() {
       element: <Login />,
     },
     {
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
       id: 'app',
       path: '/',
       label: '入口',

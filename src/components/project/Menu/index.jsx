@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 import OptionRouter from '@/router/router';
 
+<<<<<<< HEAD
 import { ConditionalRender, Intl, useMediaQuery, useSelector } from '@/components/system';
+=======
+import { ConditionalRender, useMediaQuery, useSelector } from '@/components/system';
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 
 //响应式切换
 import PADMenu from './Components/PADMenu';
@@ -33,7 +37,11 @@ function MenuIndex(props) {
       if (icon && (!isAuthenticated || isAuthenticated?.includes?.(roleType))) {
         return {
           key: path,
+<<<<<<< HEAD
           label: Intl.v(label),
+=======
+          label,
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
           icon,
           children: children?.length > 0 && getRouteJson(children),
         };

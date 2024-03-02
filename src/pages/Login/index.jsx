@@ -1,5 +1,9 @@
 import { LockFilled, SkinFilled } from '@ant-design/icons';
+<<<<<<< HEAD
 import { Form, Input, message } from 'antd';
+=======
+import { Form, Input } from 'antd';
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +24,7 @@ function Login() {
   const onFinish = async (values) => {
     const res = await requestLogin(values);
 
+<<<<<<< HEAD
     if (res?.code !== 200) {
       message.error(res?.msg);
 
@@ -34,18 +39,38 @@ function Login() {
       }),
     );
 
+=======
+    // if (res?.code !== 200) {
+    //   message.error(res?.msg);
+    //
+    //   return;
+    // }
+
+    dispatch(
+      onSetState({
+        token: res?.data?.Token || 'token',
+        roleType: res?.data?.Username || 'admin',
+        username: res?.data?.Nick || 'admin',
+      }),
+    );
+
+    //跳转到上一次退出前选择的菜单项
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     navigate('/');
   };
 
   //表单输入错误事件
   const onFinishFailed = (errorInfo) => console.log('Failed:', errorInfo);
 
+<<<<<<< HEAD
   //注册
   const onJumpRegister = () => navigate('/register');
 
   //忘记密码
   const onJumpForgectPassword = () => navigate('/forgetpassword');
 
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   useEffect(() => {
     const params = new URLSearchParams(window.location?.hash?.split('?')[1]);
 
@@ -117,6 +142,7 @@ function Login() {
             </ProtectedButton>
           </Form.Item>
         </Form>
+<<<<<<< HEAD
 
         <div className={styles.LoginFormBoxOther}>
           <ProtectedButton onClick={onJumpRegister} type="link">
@@ -126,6 +152,8 @@ function Login() {
             忘记密码
           </ProtectedButton>
         </div>
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
       </div>
     </div>
   );

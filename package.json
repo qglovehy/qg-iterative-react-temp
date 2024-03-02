@@ -1,11 +1,19 @@
 {
   "name": "qg-iteration-react-temp",
+<<<<<<< HEAD
   "version": "1.0.16",
+=======
+  "version": "1.0.15",
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   "description": "QG-REACT演示项目",
   "main": "main.js",
   "scripts": {
     "build": "rimraf ./dist && cross-env NODE_ENV=production webpack --config ./config/webpack.pro.js",
+<<<<<<< HEAD
     "start": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.dev.js",
+=======
+    "start": "rimraf ./dist && cross-env NODE_ENV=development webpack --config ./config/webpack.dev.js",
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx ",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
@@ -74,8 +82,11 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@types/webpack-env": "^1.18.4",
+<<<<<<< HEAD
     "@typescript-eslint/parser": "^7.0.1",
     "@umijs/fabric": "^3.0.0",
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     "autoprefixer": "^10.4.14",
     "babel-loader": "^8.2.5",
     "commander": "10.0.1",
@@ -83,9 +94,12 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^3.4.1",
+<<<<<<< HEAD
     "eslint": "^8.23.1",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.31.10",
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "html-webpack-plugin": "^5.5.0",
     "less": "^3.0.0",
@@ -95,7 +109,10 @@
     "npmlog": "^7.0.1",
     "postcss": "^8.1.0",
     "postcss-loader": "^6.2.1",
+<<<<<<< HEAD
     "prettier": "^2.4.1",
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
     "react-refresh": "^0.14.0",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",

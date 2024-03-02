@@ -103,6 +103,7 @@ const en_US = [
   'polygon clipping',
   'open',
   'Background management system',
+<<<<<<< HEAD
   'Layout Fields',
   'Container Fields',
   'Basic Fields',
@@ -158,6 +159,8 @@ const en_US = [
   'Editable Query Table',
   'Basic Query Table',
   'Home Page',
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 ];
 
 export default en_US;

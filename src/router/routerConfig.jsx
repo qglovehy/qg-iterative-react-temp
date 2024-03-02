@@ -21,6 +21,7 @@ export const IndexPage = lazy(() =>
 );
 
 /*
+<<<<<<< HEAD
  * 注册
  */
 export const Register = lazy(() =>
@@ -35,6 +36,8 @@ export const ForgetPassword = lazy(() =>
 );
 
 /*
+=======
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
  * 基础查询表格
  */
 export const BannerList = lazy(() =>

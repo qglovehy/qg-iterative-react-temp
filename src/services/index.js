@@ -5,7 +5,11 @@ import { onClearLoginOutTime, setLoading } from '@/utils/pubilc';
 import { store } from '@/components/system';
 
 export const config = {
+<<<<<<< HEAD
   baseURL: 'http://localhost:8000/',
+=======
+  baseURL: 'http://127.0.0.1/',
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   wsList: {
     docker: '127.0.0.1/',
     api: '127.0.0.1/',
@@ -21,12 +25,20 @@ function fetchWithTimeout(url, requestOptions) {
   ]);
 }
 
+<<<<<<< HEAD
 export const post = async (url, data, noLoading, formatData) => {
+=======
+export const post = (url, data, noLoading, formatData) => {
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
   const myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json');
 
+<<<<<<< HEAD
   const token = store?.getState().counter.value.token;
+=======
+  const token = store?.getState()?.token?.value?.token;
+>>>>>>> ae60626a2f177c1ffd3a9b625623dbab952be61d
 
   if (token) myHeaders.set('Authorization', token);
 
