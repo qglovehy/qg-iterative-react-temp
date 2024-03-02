@@ -1,22 +1,30 @@
 import { LockFilled, SkinFilled } from '@ant-design/icons';
-import { Form, Input, message } from 'antd';
-import React, { startTransition, useEffect } from 'react';
+import { Form, Input } from 'antd';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { requestForgetPassword } from '@/services/login';
 
 import LottieAnimation from '@/components/project/LottieAnimation';
-import { ProtectedButton } from '@/components/system';
+import { MessageContext, ProtectedButton } from '@/components/system';
 
 import lotty1 from '@/assets/lotty/lot1.json';
 
 import styles from './index.scss';
 
 function ForgetPassword() {
+  const message = useContext(MessageContext);
+
   const navigate = useNavigate();
 
   //登录按钮
   const onFinish = async (values) => {
+    if (values['password'] !== values['password_confirm']) {
+      message.warning('新旧密码不一致');
+
+      return;
+    }
+
     const res = await requestForgetPassword(values);
 
     if (res?.code !== 200) {
@@ -27,7 +35,7 @@ function ForgetPassword() {
 
     message.success(res.msg);
 
-    navigate('/');
+    navigate('/login');
   };
 
   //表单输入错误事件
@@ -35,20 +43,6 @@ function ForgetPassword() {
 
   //登录
   const onJumpLogin = () => navigate('/login');
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location?.hash?.split('?')[1]);
-
-    const username = params.get('username');
-    const password = params.get('password');
-
-    if (username && password) {
-      onFinish({
-        username,
-        password,
-      });
-    }
-  }, []);
 
   return (
     <div className={styles.ForgetPassword}>
@@ -61,7 +55,7 @@ function ForgetPassword() {
       {/*分割线*/}
       <div className={styles.ForgetPasswordLine}></div>
 
-      {/*登录表单*/}
+      {/*表单*/}
       <div className={styles.ForgetPasswordFormBox}>
         <Form autoComplete="off" name="basic" onFinish={onFinish} onFinishFailed={onFinishFailed}>
           <Form.Item
@@ -96,13 +90,29 @@ function ForgetPassword() {
               placeholder="请输入密码 "
               prefix={<LockFilled />}
               size="large"
-              value="123456"
+            />
+          </Form.Item>
+          <Form.Item
+            name="password_confirm"
+            rules={[
+              {
+                required: true,
+                message: '请输入确认密码 ',
+              },
+            ]}
+          >
+            <Input.Password
+              autoComplete="on"
+              className={styles.ForgetPasswordInput}
+              placeholder="请输入确认密码 "
+              prefix={<LockFilled />}
+              size="large"
             />
           </Form.Item>
 
           <Form.Item>
             <ProtectedButton className={styles.ForgetPasswordBtn} htmlType="submit" type="primary">
-              登录
+              修改密码
             </ProtectedButton>
           </Form.Item>
         </Form>

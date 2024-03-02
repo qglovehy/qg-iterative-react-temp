@@ -1,18 +1,20 @@
 import { LockFilled, SkinFilled } from '@ant-design/icons';
-import { Form, Input, message } from 'antd';
-import React, { useEffect } from 'react';
+import { Form, Input } from 'antd';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { requestLogin } from '@/services/login';
 
 import LottieAnimation from '@/components/project/LottieAnimation';
-import { ProtectedButton, onSetState, useDispatch } from '@/components/system';
+import { MessageContext, ProtectedButton, onSetState, useDispatch } from '@/components/system';
 
 import lotty1 from '@/assets/lotty/lot1.json';
 
 import styles from './index.scss';
 
 function Login() {
+  const message = useContext(MessageContext);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

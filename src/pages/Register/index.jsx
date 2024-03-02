@@ -1,18 +1,20 @@
 import { LockFilled, SkinFilled } from '@ant-design/icons';
-import { Form, Input, message } from 'antd';
-import React, { startTransition } from 'react';
+import { Form, Input } from 'antd';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { requestRegister } from '@/services/login';
 
 import LottieAnimation from '@/components/project/LottieAnimation';
-import { ProtectedButton } from '@/components/system';
+import { MessageContext, ProtectedButton } from '@/components/system';
 
 import lotty1 from '@/assets/lotty/lot1.json';
 
 import styles from './index.scss';
 
 function Register() {
+  const message = useContext(MessageContext);
+
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
