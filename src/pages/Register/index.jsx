@@ -1,6 +1,6 @@
 import { LockFilled, SkinFilled } from '@ant-design/icons';
 import { Form, Input, message } from 'antd';
-import React from 'react';
+import React, { startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { requestRegister } from '@/services/login';
@@ -15,21 +15,19 @@ import styles from './index.scss';
 function Register() {
   const navigate = useNavigate();
 
-  //登录按钮
   const onFinish = async (values) => {
-    event.preventDefault();
+    startTransition(async () => {
+      const res = await requestRegister(values);
 
-    const res = await requestRegister(values);
+      if (res?.code !== 200) {
+        message.error(res?.msg);
 
-    if (res?.code !== 200) {
-      message.error(res?.msg);
+        return;
+      }
 
-      return;
-    }
-
-    message.success(res.msg);
-
-    navigate('/login');
+      message.success(res.msg);
+      navigate('/login');
+    });
   };
 
   //表单输入错误事件
