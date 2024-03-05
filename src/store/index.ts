@@ -24,5 +24,14 @@ const store = createStore(persistenceReducers);
 //使用persistStore包裹一下
 const persistence = persistStore(store);
 
+//添加一个容易查看的redux
+try {
+  window['get_redux_value'] = () =>
+    JSON.parse(JSON.parse(localStorage.getItem('persist:qg-iterative-react-redux-local')).counter)
+      .value;
+} catch (e) {
+  console.error('get_redux_value: ', e);
+}
+
 //抛出store和持久化工具两个对象信息
 export { store, persistence };
