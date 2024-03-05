@@ -2,7 +2,7 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Form, Input, Modal } from 'antd';
 import React, { useContext, useRef, useState } from 'react';
 
-import { requestClearSuperviseUser, requestGetSuperviseUser } from '@/services/black';
+import { requestClearSuperviseUser, requestUserList } from '@/services/black';
 
 import { BaseList, Intl, MessageContext, ProtectedButton } from '@/components/system';
 
@@ -47,14 +47,14 @@ function BannerList() {
     {
       title: Intl.v('用户名'),
       align: 'center',
-      dataIndex: 'Users',
-      key: 'Users',
+      dataIndex: 'username',
+      key: 'username',
     },
     {
       title: Intl.v('创建时间'),
       align: 'center',
-      dataIndex: 'CreateTime',
-      key: 'CreateTime',
+      dataIndex: 'create_time',
+      key: 'create_time',
     },
     {
       title: Intl.v('操作'),
@@ -87,7 +87,7 @@ function BannerList() {
   async function requestListAllData(params = {}, callback) {
     message.success('触发查询' + JSON.stringify(params));
 
-    const res = await requestGetSuperviseUser(params);
+    const res = await requestUserList(params);
 
     if (res?.code !== 200) {
       message.warning(res?.msg ?? '请求失败');
