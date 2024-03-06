@@ -26,9 +26,9 @@ function BannerList() {
   //搜索表单
   const searchData = useRef([
     {
-      key: 'Users',
+      key: 'username',
       value: (
-        <Form.Item label="用户名" name="Users">
+        <Form.Item label="用户名" name="username">
           <Input />
         </Form.Item>
       ),
@@ -100,7 +100,7 @@ function BannerList() {
     //将数据格式整理成 如下然后传入查询表格组件
     const resData = {
       dataSource: res.data,
-      total: res?.data?.length,
+      total: res?.total,
     };
 
     callback?.(resData);

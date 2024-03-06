@@ -5,8 +5,8 @@ import { onClearLoginOutTime, setLoading } from '@/utils/pubilc';
 import { store } from '@/components/system';
 
 export const config = {
-  baseURL: 'http://localhost:8000/',
-  // baseURL: 'http://103.117.121.53:8000/',
+  // baseURL: 'http://localhost:8000/',
+  baseURL: 'http://103.117.121.53:8000/',
   wsList: {
     docker: '127.0.0.1/',
     api: '127.0.0.1/',
@@ -44,7 +44,7 @@ export const post = async (url, data, noLoading, formatData) => {
     data && (requestOptions['body'] = JSON.stringify(data));
   }
 
-  //是否  不展示loading遮罩
+  //是否 不展示loading遮罩
   !noLoading && setLoading(true);
 
   return fetchWithTimeout(url, requestOptions)
