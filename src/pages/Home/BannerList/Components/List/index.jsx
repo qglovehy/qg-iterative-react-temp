@@ -2,9 +2,15 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Form, Input, Modal } from 'antd';
 import React, { useContext, useRef, useState } from 'react';
 
-import { requestClearSuperviseUser, requestUserList } from '@/services/black';
+import { requestDelUserById, requestUserList } from '@/services/black';
 
-import { BaseList, Intl, MessageContext, ProtectedButton } from '@/components/system';
+import {
+  BaseList,
+  ConditionalRender,
+  Intl,
+  MessageContext,
+  ProtectedButton,
+} from '@/components/system';
 
 import BannerListSaveOrUpdateWrap from '../SaveOrUpdate/wrap';
 import BannerListViewModal from '../View';
@@ -19,9 +25,20 @@ function BannerList() {
 
   const [localEditData, setLocalData] = useState({});
   const [localViewData, setLocalViewData] = useState({});
-
   const [saveVisible, setSaveVisible] = useState(false);
   const [viewVisible, setViewVisible] = useState(false);
+  const rowSelectionVal = useRef({
+    selectedRowKeys: [],
+    selectedRows: [],
+  });
+
+  //表格多选
+  const rowSelection = useRef({
+    onChange: onRowSelectionChange,
+    getCheckboxProps: (record) => ({
+      disabled: record.username === 'admin',
+    }),
+  });
 
   //搜索表单
   const searchData = useRef([
@@ -62,14 +79,31 @@ function BannerList() {
       key: 'option',
       render: (_, record) => (
         <>
-          <ProtectedButton action="edit" key="edit" onClick={() => onEdit(record)} type="link">
-            {Intl.v('编辑')}
-          </ProtectedButton>
+          <ConditionalRender conditional={record.username !== 'admin'}>
+            {() => (
+              <>
+                <ProtectedButton
+                  action="edit"
+                  key="edit"
+                  onClick={() => onEdit(record)}
+                  type="link"
+                >
+                  {Intl.v('编辑')}
+                </ProtectedButton>
+                <ProtectedButton
+                  action="delete"
+                  key="del"
+                  onClick={() => onDelete(record)}
+                  type="link"
+                >
+                  {Intl.v('删除')}
+                </ProtectedButton>
+              </>
+            )}
+          </ConditionalRender>
+
           <ProtectedButton action="view" key="view" onClick={() => onView(record)} type="link">
             {Intl.v('查看')}
-          </ProtectedButton>
-          <ProtectedButton action="delete" key="del" onClick={() => onDelete(record)} type="link">
-            {Intl.v('删除')}
           </ProtectedButton>
         </>
       ),
@@ -81,11 +115,14 @@ function BannerList() {
     <ProtectedButton action="add" key="save" onClick={onSave} type="primary">
       {Intl.v('新增')}
     </ProtectedButton>,
+    <ProtectedButton action="del" danger key="del" onClick={onBatchDelete} type="primary">
+      {Intl.v('批量删除')}
+    </ProtectedButton>,
   ]);
 
   //查询列表数据
   async function requestListAllData(params = {}, callback) {
-    message.success('触发查询' + JSON.stringify(params));
+    // message.success('触发查询' + JSON.stringify(params));
 
     const res = await requestUserList(params);
 
@@ -109,13 +146,13 @@ function BannerList() {
   //删除
   function onDelete(record) {
     Modal.confirm({
-      title: `${Intl.v('确认删除')}【${record?.Users}】？`,
+      title: `${Intl.v('确认删除')}【${record?.username}】？`,
       icon: <ExclamationCircleOutlined />,
       okText: Intl.v('确认'),
       cancelText: Intl.v('取消'),
       wrapClassName: 'centered-modal',
       onOk: async () => {
-        const res = await requestClearSuperviseUser({ Id: record.Id });
+        const res = await requestDelUserById({ id: record.id });
 
         if (res?.code !== 200) {
           message.warning(res?.msg);
@@ -123,7 +160,36 @@ function BannerList() {
           return;
         }
 
-        message.success(res?.msg);
+        message.success(res?.msg + record?.username);
+
+        //刷新列表
+        ref.current?.onSearch?.();
+      },
+    });
+  }
+
+  //批量删除
+  function onBatchDelete() {
+    const usernames = rowSelectionVal.current.selectedRows?.map((item) => item.username).join('，');
+
+    Modal.confirm({
+      title: `${Intl.v('确认删除')}【${usernames}】？`,
+      icon: <ExclamationCircleOutlined />,
+      okText: Intl.v('确认'),
+      cancelText: Intl.v('取消'),
+      wrapClassName: 'centered-modal',
+      onOk: async () => {
+        const res = await requestDelUserById({
+          id: rowSelectionVal.current.selectedRowKeys.join(','),
+        });
+
+        if (res?.code !== 200) {
+          message.warning(res?.msg);
+
+          return;
+        }
+
+        message.success(res?.msg + usernames);
 
         //刷新列表
         ref.current?.onSearch?.();
@@ -161,9 +227,16 @@ function BannerList() {
     onBannerListViewOpen();
   }
 
+  //表格多选事件
+  function onRowSelectionChange(selectedRowKeys, selectedRows) {
+    rowSelectionVal.current = { selectedRowKeys, selectedRows };
+  }
+
   //关闭编辑弹窗
-  function onBannerListEditCancel() {
+  function onBannerListEditCancel(isRefresh) {
     setSaveVisible(false);
+
+    isRefresh && ref.current?.onSearch?.();
   }
 
   //打开编辑弹窗
@@ -187,7 +260,11 @@ function BannerList() {
         columns={columns.current} //表头
         optionButtonGroup={optionButtonGroup.current} //表头上方操作按钮
         ref={ref}
-        rowSelection={false} // 禁用列表多选
+        rowSelection={{
+          type: 'checkbox',
+          ...rowSelection.current,
+        }} // 禁用列表多选
+        // rowSelection={false} // 禁用列表多选
         searchParamList={searchData.current}
         serviceFunc={requestListAllData} // 请求数据方法
         // otherParams={{ showHeader: false }} //其他 antd 表格属性

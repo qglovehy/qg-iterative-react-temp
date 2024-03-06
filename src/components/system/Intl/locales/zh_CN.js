@@ -158,6 +158,7 @@ const zh_CN = [
   '可编辑查询表格',
   '基础查询表格',
   '首页',
+  '批量删除',
 ];
 
 export default zh_CN;

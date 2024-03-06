@@ -2,13 +2,12 @@ import { message } from 'antd';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
 
-import { requestAddSupervise } from '@/services/abnormalProgress';
-import { updateAwardData } from '@/services/drawList';
+import { requestSaveUser, requestUpdateUser } from '@/services/black';
 
 import Index from './index';
 
 function BannerListWrap(props) {
-  const { data = {}, onCancel = () => {} } = props;
+  const { data = {}, onCancel = (a) => a } = props;
 
   const ref = useRef();
 
@@ -18,30 +17,33 @@ function BannerListWrap(props) {
       .then(async (values) => {
         const params = { ...values };
 
-        if (params?.Id) {
+        if (params?.id) {
           //编辑  调用接口的方法需要自定义
-          const res = await updateAwardData(values);
+          const res = await requestUpdateUser(values);
 
-          if (res?.code === 0) {
+          if (res?.code === 200) {
             message.success(res?.msg);
+
+            //关闭Modal
+            onCancel(true);
           } else {
             message.error(res?.msg);
           }
         } else {
           //新增 调用接口的方法需要自定义
-          params?.Id && delete params['Id'];
+          params?.id && delete params['Id'];
 
-          const res = await requestAddSupervise(values);
+          const res = await requestSaveUser(values);
 
           if (res?.code === 200) {
             message.success(res?.msg);
+
+            //关闭Modal
+            onCancel(true);
           } else {
             message.error(res?.msg);
           }
         }
-
-        //关闭Modal
-        onCancel();
       })
       .catch((err) => console.error(err));
   }
