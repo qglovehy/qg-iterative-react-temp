@@ -172,6 +172,12 @@ function BannerList() {
   function onBatchDelete() {
     const usernames = rowSelectionVal.current.selectedRows?.map((item) => item.username).join('，');
 
+    if (!usernames) {
+      message.warning('请先选择用户');
+
+      return;
+    }
+
     Modal.confirm({
       title: `${Intl.v('确认删除')}【${usernames}】？`,
       icon: <ExclamationCircleOutlined />,
