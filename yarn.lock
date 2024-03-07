@@ -7992,10 +7992,10 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://mirrors.huaweicloud.com/repository/npm/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
-qgtools@^1.0.15:
-  version "1.0.15"
-  resolved "https://registry.npmjs.org/qgtools/-/qgtools-1.0.15.tgz#ef60679cff093514a198499dab836ae616a7cab2"
-  integrity sha512-Yc0UkCjAy6veEHpNWf1VN6Nyr3aT3k0Ki5l11P6xTW8T/nFrCVlGwi183FRl5fX43eD+T/wVgVHYv4/HMY+9/g==
+qgtools@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.npmjs.org/qgtools/-/qgtools-1.0.16.tgz#05ef168c48358ecce281c6ed9edb884ada6820a2"
+  integrity sha512-q54B867rSRtgdQqvr0eKPNt4xGusx/CWDz3EcLZSTHPzBgiZnMc9i9j5q2G6qnUPHzjGsehB5onvn7hTreudyQ==
   dependencies:
     "@babel/core" "^7.19.1"
     "@babel/eslint-parser" "^7.23.3"
