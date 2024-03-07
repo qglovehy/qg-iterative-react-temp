@@ -93,7 +93,7 @@ function HeaderIndex() {
         >
           {() => (
             <Space className={styles.HomeHeaderTitle} onClick={onBackHome}>
-              <Svg name="headertitle" size={22} />
+              <Svg name="headertitle" size={21} />
               <span>{Intl.v('后台管理系统')}</span>
             </Space>
           )}

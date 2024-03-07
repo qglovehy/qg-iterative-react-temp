@@ -54,6 +54,12 @@ const webpackConfig = merge(common, {
           name: 'chunk-echarts',
           priority: 80,
         },
+        // 公共组件库单独打包
+        'qg-react-components': {
+          test: /[\\/]node_modules[\\/]qg-react-components(-*)?[\\/]/,
+          name: 'chunk-qg-react-components',
+          priority: 60,
+        },
         // 剩下node_modules单独打包
         libs: {
           test: /[\\/]node_modules[\\/]/,

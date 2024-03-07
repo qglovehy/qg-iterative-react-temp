@@ -7,7 +7,14 @@ import { ISvgProps } from './types';
 import styles from './index.scss';
 
 const IconComponent: FC<ISvgProps> = (props) => {
-  const { name = '', color = 'var(--font-3-color)', size = 16, className = '' } = props;
+  const {
+    name = '',
+    color = 'var(--font-3-color)',
+    size = 16,
+    width = 16,
+    height = 16,
+    className = '',
+  } = props;
 
   return (
     <svg
@@ -15,6 +22,8 @@ const IconComponent: FC<ISvgProps> = (props) => {
       style={{
         color: color,
         fontSize: size + 'px',
+        width: size || width + 'px',
+        height: size || height + 'px',
       }}
     >
       <use xlinkHref={`#icon-${name}`} />

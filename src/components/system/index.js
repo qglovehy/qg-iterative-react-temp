@@ -7,51 +7,55 @@ import '@/assets';
 import '@/styles/normalize.css';
 import '@/styles/root.scss';
 
+import 'qg-react-components/lib/index.css';
+
+//公共组件
+
+//==========================组件库组件===================================================
 //持久化存储 redux
-export { Provider, useDispatch, useSelector } from 'react-redux';
-export { PersistGate } from 'redux-persist/lib/integration/react';
-export { store, persistence } from '@/store';
+export { Provider, useDispatch, useSelector } from 'qg-react-components'; //'react-redux';
+export { PersistGate } from 'qg-react-components'; //'redux-persist/lib/integration/react';
 export {
+  store, //@/store
+  persistence, //@/store
   default as QGIterativeReducer,
   onResetState,
   onSetState,
   setAntdTheme,
-} from '@/store/counter';
+} from 'qg-react-components'; //'@/store/counter';
 
-//初始化字典
-export { initDictData, Dict } from '@/utils/dictionaryData';
+export {
+  Intl, // './Intl'; //初始化国际化
+  IntlDropdown, //  './Intl/Components/IntlDropdown'; //国际化组价
+} from 'qg-react-components';
 
-//自定义钩子
-export { useSetState, useMediaQuery } from '@/hooks';
+export { initDictData, Dict } from 'qg-react-components'; //'@/utils/dictionaryData'; //初始化字典
+export { useSetState, useMediaQuery } from 'qg-react-components'; // '@/hooks'; //自定义钩子
 
-//国际化相关
-export { default as Intl } from './Intl';
-export { default as IntlDropdown } from './Intl/Components/IntlDropdown';
+export {
+  BaseList, // './BaseList'; //基础查询表格
+  ListBody, //'./BaseList/Components/ListBody'; //基础查询表格体
+  EditTableListBody, //'./BaseList/Components/EditTableListBody'; //可编辑查询表格体
+} from 'qg-react-components';
 
-//公共组件
-export { default as ConditionalRender } from './ConditionalRender';
-export { default as BaseList } from './BaseList';
-export { default as ListBody } from './BaseList/Components/ListBody';
-export { default as EditTableListBody } from './BaseList/Components/EditTableListBody';
-export { default as BreadcrumbNav } from './BreadcrumbNav';
-export { default as DriverGroup } from './DriverGroup';
-export { default as FormComponents } from './FormComponents';
-export { default as FunctionControl } from './FunctionControl';
-export { default as HistoryBack } from './HistoryBack';
-export { default as Img } from './Img';
-export { default as Pagination } from './Pagination';
-export { default as ProtectedButton } from './ProtectedButton';
-export { default as RenderDom } from './RenderDom';
-export { default as SearchForm } from './SearchForm';
-export { default as Svg } from './Svg';
-export { default as ThemeSwitcher } from './ThemeSwitcher';
+export { DriverGroup } from 'qg-react-components'; //'./DriverGroup'; //自定义分割组
+export { FunctionControl } from 'qg-react-components'; //'./FunctionControl'; //查询表格控件
+export { ProtectedButton } from 'qg-react-components'; //'./ProtectedButton'; //权限按钮
+export { Img } from 'qg-react-components'; //'./Img'; // 图片插入组件
+export { Svg } from 'qg-react-components'; //'./Svg'; //Svg雪碧图配合插件
 
-export { default as UnNormalCase403 } from './UnNormalCase/Error_403';
-export { default as UnNormalCase404 } from './UnNormalCase/Error_404';
-export { default as UnNormalCase500 } from './UnNormalCase/Error_500';
-
-//WangEditor
-export { default as WangEditorFrame } from './WangEditorFrame';
+export { BreadcrumbNav } from 'qg-react-components'; // './BreadcrumbNav'; //面包屑
+export { FormComponents } from 'qg-react-components'; // './FormComponents';  //自定义表单组件
+export { SearchForm } from 'qg-react-components'; //'./SearchForm'; //查询表单
+export { Pagination } from 'qg-react-components'; //'./Pagination'; //分页
+export { RenderDom } from 'qg-react-components'; //'./RenderDom'; //div 渲染dom
+export { ThemeSwitcher } from 'qg-react-components'; //'./ThemeSwitcher'; //主题切换
+export { ConditionalRender } from 'qg-react-components'; //'./ConditionalRender'; //条件渲染
+export { WangEditorFrame } from 'qg-react-components'; //'./WangEditorFrame'; //iframe 包裹 富文本编辑器
+export { HistoryBack } from 'qg-react-components'; //'./HistoryBack'; //返回组件
+export { UnNormalCase403 } from 'qg-react-components'; //'./UnNormalCase/Error_403'; //错误页面403
+export { UnNormalCase404 } from 'qg-react-components'; //'./UnNormalCase/Error_404'; //错误页面404
+export { UnNormalCase500 } from 'qg-react-components'; //'./UnNormalCase/Error_500'; //错误页面500
 
 // 创建一个Context
 export const MessageContext = createContext(null);

@@ -15,7 +15,7 @@ import styles from './index.scss';
 const BreadcrumbNav: FC<IBreadcrumbNavProps> = ({
   firstTitle = '',
   separator = <CaretRightOutlined />,
-  onClick = (a: any) => null,
+  onClick = (a: any) => a,
 }) => {
   const { breadcrumb = [] } = useSelector((state: IRootStateProps) => state.counter.value);
 

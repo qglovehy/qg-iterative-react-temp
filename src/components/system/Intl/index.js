@@ -1,15 +1,7 @@
 import intl from 'react-intl-universal';
 
-import { store } from '@/components/system';
-
 import en_US_List from './locales/en_US';
 import zh_CN_List from './locales/zh_CN';
-
-//init react-intl
-let objLocales = {
-  currentLocale: 'zh_CN',
-  locales: {},
-};
 
 //预设的国际化文件
 const locales = {
@@ -35,7 +27,7 @@ const Intl = {
     initKey = {};
 
     //初始化国际化参数
-    objLocales = {
+    const objLocales = {
       currentLocale,
       locales: {},
     };
