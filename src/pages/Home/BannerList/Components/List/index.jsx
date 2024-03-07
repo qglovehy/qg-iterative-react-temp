@@ -122,7 +122,7 @@ function BannerList() {
 
   //查询列表数据
   async function requestListAllData(params = {}, callback) {
-    // message.success('触发查询' + JSON.stringify(params));
+    //message.success('触发查询' + JSON.stringify(params));
 
     const res = await requestUserList(params);
 

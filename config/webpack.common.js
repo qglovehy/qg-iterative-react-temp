@@ -92,7 +92,6 @@ module.exports = {
     //web端使用 process
     new NodePolyfillPlugin(),
   ],
-  //分割包 开发环境不分割，因为会提升热更新的复杂度
   optimization: {
     splitChunks: false,
   },

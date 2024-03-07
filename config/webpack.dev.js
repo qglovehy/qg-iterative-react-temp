@@ -19,6 +19,38 @@ const webpackConfig = merge(common, {
     // clientLogLevel: 'none', // 不再输出繁琐的信息
   },
   plugins: [new ReactRefreshWebpackPlugin(), new webpack.HotModuleReplacementPlugin()],
+  //分割包
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        // react react-dom react-router-dom 一起打包成一个js文件
+        react: {
+          test: /[\\/]node_modules[\\/]react(.*)?[\\/]/,
+          name: 'chunk-react',
+          priority: 100,
+        },
+        // antd 单独打包
+        antd: {
+          test: /[\\/]node_modules[\\/]antd[\\/]/,
+          name: 'chunk-antd',
+          priority: 90,
+        },
+        // echarts 单独打包
+        echarts: {
+          test: /[\\/]node_modules[\\/]echarts(-*)?[\\/]/,
+          name: 'chunk-echarts',
+          priority: 80,
+        },
+        // 剩下node_modules单独打包
+        libs: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'chunk-libs',
+          priority: 10,
+        },
+      },
+    },
+  },
 });
 
 module.exports = webpackConfig;
