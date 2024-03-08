@@ -8009,10 +8009,10 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://mirrors.huaweicloud.com/repository/npm/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
-qg-react-components@^3.0.31:
-  version "3.0.31"
-  resolved "https://registry.npmjs.org/qg-react-components/-/qg-react-components-3.0.31.tgz#2f172556f6a5b12ce04c06b602c7a4293af935f8"
-  integrity sha512-M7BTzk2ozRTaVykIIqLSS6KCjs5KwprYnO2xnTA8kchV1lnkik0OLch4PQlSHWqtxS7bB3D32xzWz64yETbhFg==
+qg-react-components@^3.0.33:
+  version "3.0.33"
+  resolved "https://registry.npmjs.org/qg-react-components/-/qg-react-components-3.0.33.tgz#7222a3944cea18876b31ac69345f0ef07d843899"
+  integrity sha512-8Zs/pBb4tVL4LfxSAa5XZmrjb4yAeJX6aoaUHK8mkqRNA4lfBE5Ct88wA4KurCQ+aJi/GDMBNRD1ayTi7i44lQ==
   dependencies:
     "@reduxjs/toolkit" "^1.9.5"
     "@types/react" "^18.2.47"
@@ -8029,10 +8029,10 @@ qg-react-components@^3.0.31:
     redux-persist "^6.0.0"
     uuid "^9.0.0"
 
-qgtools@^1.0.19:
-  version "1.0.19"
-  resolved "https://registry.npmjs.org/qgtools/-/qgtools-1.0.19.tgz#70cd430272aa95c2ef20a3470899125a11b4a8a8"
-  integrity sha512-z4D9gj88TZdKaRcxgsut3kmLJmJrYi94HDCUAM5yutVBTgIKNWTXUaXNdCJEPDQyWkFmvn2Io8nGusTaDBy9cQ==
+qgtools@^1.0.21:
+  version "1.0.21"
+  resolved "https://registry.npmjs.org/qgtools/-/qgtools-1.0.21.tgz#8a8ab0e17f85752586ab1d8db1c17cc2307614c7"
+  integrity sha512-qDPmTHkaLF3mhaxvcQ0UX1ctPmnO6N4qkSWAeQ0RojjHzG409w/2GF7ZmtoNAhkyRlzUmeVzaia3dec6U23BLA==
   dependencies:
     "@babel/core" "^7.19.1"
     "@babel/eslint-parser" "^7.23.3"
