@@ -3,6 +3,7 @@ import React from 'react';
 
 import {
   BannerList,
+  CssBoxScrollFlex,
   EditTableList,
   ForgetPassword,
   HomeIndex,
@@ -39,6 +40,22 @@ function OptionRouters() {
           label: '可编辑查询表格',
           element: <EditTableList />,
           icon: <TagOutlined />,
+        },
+        {
+          id: 'CssBox',
+          path: '/cssScrollFlex',
+          label: 'CSS样式效果',
+          element: <CssBoxScrollFlex />,
+          icon: <TagOutlined />,
+          children: [
+            {
+              id: 'CSSScrollFlex',
+              path: '/cssScrollFlex',
+              label: '滚动固定',
+              element: <CssBoxScrollFlex />,
+              icon: <TagOutlined />,
+            },
+          ],
         },
       ],
     },

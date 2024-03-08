@@ -22,6 +22,25 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     box-shadow: var(--normal-box-shadom);
+
+    .BaseListRowSelection {
+      display: flex;
+      flex-wrap: wrap;
+
+      .BaseListRowSelectionItem {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+        padding: 2px 5px;
+        color: #fff;
+        background-color: var(--primary-color);
+        border-radius: 5px;
+
+        span {
+          color: currentColor;
+        }
+      }
+    }
   }
 
   .BaseListContentFlexGrow {

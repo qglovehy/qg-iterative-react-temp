@@ -4,10 +4,8 @@ import ExportJsonExcel from 'js-export-excel';
 import moment from 'moment';
 import React, { FC, memo } from 'react';
 
-import ConditionalRender from '../ConditionalRender';
-import Intl from '../Intl';
-import ProtectedButton from '../ProtectedButton';
-import Svg from '../Svg';
+import { ConditionalRender, Intl, ProtectedButton, Svg } from '@/components/system';
+
 import { IFunctionControlProps, IOptionProps } from './types';
 
 //@ts-ignore

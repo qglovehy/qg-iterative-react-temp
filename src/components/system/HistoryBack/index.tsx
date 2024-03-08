@@ -2,8 +2,8 @@ import { Layout, Space } from 'antd';
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import ConditionalRender from '../ConditionalRender';
-import ProtectedButton from '../ProtectedButton';
+import { ConditionalRender, ProtectedButton } from '@/components/system';
+
 import { IHistoryBackProps } from './types';
 
 //@ts-ignore

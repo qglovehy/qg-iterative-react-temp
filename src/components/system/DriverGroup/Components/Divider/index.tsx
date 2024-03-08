@@ -10,8 +10,8 @@ const Divider: FC<IDriverProps> = ({
   symbol,
   type = 'horizontal',
   height = '100%',
-  width = '1px',
-  color = 'var(--font-3-color)',
+  width = '0px',
+  color = 'transparent',
 }) => {
   const style: React.CSSProperties = {};
 

@@ -1,7 +1,8 @@
 import { Pagination } from 'antd';
 import React, { FC, memo } from 'react';
 
-import Intl from '../Intl';
+import { Intl } from '@/components/system';
+
 import { IPaginationProps } from './types';
 
 //@ts-ignore

@@ -1,0 +1,12 @@
+.CssBoxScrollFlex {
+  height: 100%;
+  overflow-y: auto;
+
+  .CssBoxScrollFlexElement {
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    font-size: 20px;
+    background-color: var(--primary-color);
+  }
+}

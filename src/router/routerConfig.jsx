@@ -45,3 +45,10 @@ export const BannerList = lazy(() =>
 export const EditTableList = lazy(() =>
   import(/* webpackChunkName: "EditTableList" */ '@/pages/Home/EditTableList/List'),
 );
+
+/*
+ * CSS样式效果-滚动固定
+ */
+export const CssBoxScrollFlex = lazy(() =>
+  import(/* webpackChunkName: "CssBoxScrollFlex" */ '@/pages/Home/CssBox/CssBoxScrollFlex'),
+);

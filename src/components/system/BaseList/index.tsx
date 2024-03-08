@@ -10,14 +10,18 @@ import React, {
 } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
-import useSetState from '@/hooks/useSetState';
+import {
+  ConditionalRender,
+  DriverGroup,
+  EditTableListBody,
+  FunctionControl,
+  ListBody,
+  Pagination,
+  SearchForm,
+  Svg,
+  useSetState,
+} from '@/components/system';
 
-import ConditionalRender from '../ConditionalRender';
-import FunctionControl from '../FunctionControl';
-import Pagination from '../Pagination';
-import SearchForm from '../SearchForm';
-import EditTableListBody from './Components/EditTableListBody';
-import ListBody from './Components/ListBody';
 import { IBaseListProps, IStateProps } from './types';
 
 // @ts-ignore
@@ -39,6 +43,7 @@ const BaseList: ForwardRefRenderFunction<unknown, IBaseListProps> = (
     functionControlHide = true,
     topPagination = false,
     bottomPagination = true,
+    isShowRowTitleName = '',
   },
   ref,
 ) => {
@@ -55,12 +60,23 @@ const BaseList: ForwardRefRenderFunction<unknown, IBaseListProps> = (
     dataSource: [], //列表数据
     selectedRows: [], //多选整行
     selectedRowKeys: [], //多选key
+    isShowRowTitleName, //展示多选title 的字段值
     Condition: {}, //查询条件存储
-    rowSelection, //多选配置
+    rowSelection: rowSelection
+      ? {
+          onChange: onRowSelectionChange,
+          ...rowSelection,
+        }
+      : rowSelection, //多选配置
     current: 1, //当前页
     pageSize: 10, //每页条数
     total: 1, //总数
   });
+
+  //表格多选事件
+  function onRowSelectionChange(selectedRowKeys: [], selectedRows: []) {
+    setState({ selectedRowKeys, selectedRows });
+  }
 
   //改变表格密度
   function onChangeListSize(data: any) {
@@ -152,16 +168,37 @@ const BaseList: ForwardRefRenderFunction<unknown, IBaseListProps> = (
 
   //多选参数改变
   const onRowChange = (selectedRowKeys: any[], selectedRows: any[]) => {
-    setState({
-      selectedRowKeys,
-      selectedRows,
-    });
+    setState({ selectedRowKeys, selectedRows });
   };
 
-  useImperativeHandle(ref, () => ({
-    state,
-    onSearch,
-  }));
+  //取消指定多选
+  const onCloseRowByIndex = (id: string | number) => {
+    const selectedRows = state.selectedRows?.filter((item) => item.id !== id);
+    const selectedRowKeys = selectedRows?.map((item) => item.id);
+
+    setState({ selectedRowKeys, selectedRows });
+  };
+
+  //删除成功删除指定多选
+  const onChangeRowSelection = (ids: string | number) => {
+    const del_ids = String(ids).split(',');
+
+    const selectedRows = state.selectedRows?.filter((item) => !del_ids.includes(String(item.id)));
+    const selectedRowKeys = selectedRows?.map((item) => item.id);
+
+    setState({ selectedRowKeys, selectedRows });
+  };
+
+  //向父组件暴露信息
+  useImperativeHandle(
+    ref,
+    () => ({
+      state,
+      onSearch,
+      onChangeRowSelection,
+    }),
+    [state], //要获取state最新状态
+  );
 
   useEffect(() => {
     onSearch();
@@ -224,6 +261,23 @@ const BaseList: ForwardRefRenderFunction<unknown, IBaseListProps> = (
             scrollY === 0 && styles.BaseListContentFlexGrow,
           )}
         >
+          {/* 多选 项title */}
+          <ConditionalRender conditional={state.isShowRowTitleName}>
+            {() => (
+              <div className={styles.BaseListRowSelection}>
+                <DriverGroup size={5}>
+                  {state.selectedRows?.map((item, index) => (
+                    <div className={styles.BaseListRowSelectionItem} key={item.id || index}>
+                      <span>{item[state.isShowRowTitleName!]}</span>
+                      <Svg name="close_err" onClick={() => onCloseRowByIndex(item.id)} size={16} />
+                    </div>
+                  ))}
+                </DriverGroup>
+              </div>
+            )}
+          </ConditionalRender>
+
+          {/*表格体*/}
           <ConditionalRender conditional={!isEditTable}>
             {() => (
               <ListBody
@@ -232,7 +286,11 @@ const BaseList: ForwardRefRenderFunction<unknown, IBaseListProps> = (
                 onRowChange={onRowChange}
                 otherParams={otherParams}
                 ref={tableRef}
-                rowSelection={state.rowSelection}
+                rowSelection={{
+                  ...(state.rowSelection || {}),
+                  selectedRows: state.selectedRows,
+                  selectedRowKeys: state.selectedRowKeys,
+                }}
                 scrollX={scrollX}
                 scrollY={scrollY}
                 selectedRows={state.selectedRows}
@@ -249,7 +307,11 @@ const BaseList: ForwardRefRenderFunction<unknown, IBaseListProps> = (
                 onRowChange={onRowChange}
                 otherParams={otherParams}
                 ref={tableRef}
-                rowSelection={state.rowSelection}
+                rowSelection={{
+                  ...(state.rowSelection || {}),
+                  selectedRows: state.selectedRows,
+                  selectedRowKeys: state.selectedRowKeys,
+                }}
                 scrollX={scrollX}
                 scrollY={scrollY}
                 selectedRows={state.selectedRows}

@@ -11,7 +11,6 @@ import styles from './index.scss';
 const ListBody: ForwardRefRenderFunction<unknown, IListBodyProps> = (
   {
     columns = [],
-    onRowChange = (selectedRowKeys: any[], selectedRows: any[]) => null,
     dataSource = [],
     rowSelection = false,
     otherParams = {},
@@ -22,10 +21,6 @@ const ListBody: ForwardRefRenderFunction<unknown, IListBodyProps> = (
   },
   ref,
 ) => {
-  //更新多选参数 selectedRowKeys:多选id  selectedRows:多选整条数据
-  const onRowSelectionChange = (selectedRowKeys: any[], selectedRows: any[]) =>
-    onRowChange(selectedRowKeys, selectedRows);
-
   useImperativeHandle(ref, () => ({
     onSearch: () => {},
   }));
@@ -40,14 +35,7 @@ const ListBody: ForwardRefRenderFunction<unknown, IListBodyProps> = (
         dataSource={dataSource}
         pagination={false}
         rowKey={(record) => record?.rowKey || uuidV4()}
-        rowSelection={
-          typeof rowSelection === 'object'
-            ? {
-                onChange: onRowSelectionChange,
-                ...rowSelection,
-              }
-            : undefined
-        }
+        rowSelection={typeof rowSelection === 'object' ? rowSelection : undefined}
         scroll={{
           y: scrollY!,
           x: scrollX!,

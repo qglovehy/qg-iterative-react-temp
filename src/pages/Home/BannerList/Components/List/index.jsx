@@ -27,14 +27,9 @@ function BannerList() {
   const [localViewData, setLocalViewData] = useState({});
   const [saveVisible, setSaveVisible] = useState(false);
   const [viewVisible, setViewVisible] = useState(false);
-  const rowSelectionVal = useRef({
-    selectedRowKeys: [],
-    selectedRows: [],
-  });
 
   //表格多选
   const rowSelection = useRef({
-    onChange: onRowSelectionChange,
     getCheckboxProps: (record) => ({
       disabled: record.username === 'admin',
     }),
@@ -160,6 +155,9 @@ function BannerList() {
           return;
         }
 
+        //清理多选项
+        ref.current?.onChangeRowSelection(record.id);
+
         message.success(res?.msg + record?.username);
 
         //刷新列表
@@ -170,7 +168,8 @@ function BannerList() {
 
   //批量删除
   function onBatchDelete() {
-    const usernames = rowSelectionVal.current.selectedRows?.map((item) => item.username).join('，');
+    const usernames = ref.current?.state.selectedRows.map((item) => item.username).join('，');
+    const ids = ref.current?.state.selectedRowKeys.join(',');
 
     if (!usernames) {
       message.warning('请先选择用户');
@@ -186,7 +185,7 @@ function BannerList() {
       wrapClassName: 'centered-modal',
       onOk: async () => {
         const res = await requestDelUserById({
-          id: rowSelectionVal.current.selectedRowKeys.join(','),
+          id: ids,
         });
 
         if (res?.code !== 200) {
@@ -194,6 +193,9 @@ function BannerList() {
 
           return;
         }
+
+        //清理多选项
+        ref.current?.onChangeRowSelection(ids);
 
         message.success(res?.msg + usernames);
 
@@ -233,11 +235,6 @@ function BannerList() {
     onBannerListViewOpen();
   }
 
-  //表格多选事件
-  function onRowSelectionChange(selectedRowKeys, selectedRows) {
-    rowSelectionVal.current = { selectedRowKeys, selectedRows };
-  }
-
   //关闭编辑弹窗
   function onBannerListEditCancel(isRefresh) {
     setSaveVisible(false);
@@ -261,18 +258,19 @@ function BannerList() {
   }
 
   return (
-    <div className={styles.DrawIndex}>
+    <div className={styles.BannerList}>
       <BaseList
         columns={columns.current} //表头
+        isShowRowTitleName="username"
         optionButtonGroup={optionButtonGroup.current} //表头上方操作按钮
         ref={ref}
         rowSelection={{
           type: 'checkbox',
           ...rowSelection.current,
         }} // 禁用列表多选
-        // rowSelection={false} // 禁用列表多选
         searchParamList={searchData.current}
         serviceFunc={requestListAllData} // 请求数据方法
+        // rowSelection={false} // 禁用列表多选
         // otherParams={{ showHeader: false }} //其他 antd 表格属性
       />
 

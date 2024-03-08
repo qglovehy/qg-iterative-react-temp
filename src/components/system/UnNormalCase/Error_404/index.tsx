@@ -2,8 +2,7 @@ import { Result } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Intl from '../../Intl';
-import ProtectedButton from '../../ProtectedButton';
+import { Intl, ProtectedButton } from '@/components/system';
 
 const Error_404 = () => {
   const navigate = useNavigate();

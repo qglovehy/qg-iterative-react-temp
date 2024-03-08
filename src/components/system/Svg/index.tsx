@@ -14,11 +14,13 @@ const IconComponent: FC<ISvgProps> = (props) => {
     width = 16,
     height = 16,
     className = '',
+    onClick = () => void 0,
   } = props;
 
   return (
     <svg
       className={classNames(styles.SvgClass, className)}
+      onClick={onClick}
       style={{
         color: color,
         fontSize: size + 'px',

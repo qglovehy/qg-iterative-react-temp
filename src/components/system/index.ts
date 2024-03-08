@@ -4,46 +4,36 @@ import { createContext } from 'react';
 import '@/assets';
 
 //公共样式
-import '@/styles/normalize.css';
 import '@/styles/root.scss';
 
 import 'qg-react-components/lib/index.css';
-
-//公共组件
 
 //==========================组件库组件===================================================
 //持久化存储 redux
 export { Provider, useDispatch, useSelector } from 'qg-react-components'; //'react-redux';
 export { PersistGate } from 'qg-react-components'; //'redux-persist/lib/integration/react';
-export {
-  store, //@/store
-  persistence, //@/store
-  default as QGIterativeReducer,
-  onResetState,
-  onSetState,
-  setAntdTheme,
-} from 'qg-react-components'; //'@/store/counter';
 
-export {
-  Intl, // './Intl'; //初始化国际化
-  IntlDropdown, //  './Intl/Components/IntlDropdown'; //国际化组价
-} from 'qg-react-components';
+export { onResetState, onSetState, setAntdTheme } from 'qg-react-components'; //'@/store/counter';
+
+export { store, persistence } from 'qg-react-components'; //@/store
+export type { IRootStateProps } from 'qg-react-components'; //@/store/types
+
+export { Intl } from 'qg-react-components'; // './Intl'; //初始化国际化
+export { IntlDropdown } from 'qg-react-components'; //  './Intl/Components/IntlDropdown'; //国际化组价
 
 export { initDictData, Dict } from 'qg-react-components'; //'@/utils/dictionaryData'; //初始化字典
+
 export { useSetState, useMediaQuery } from 'qg-react-components'; // '@/hooks'; //自定义钩子
 
-export {
-  BaseList, // './BaseList'; //基础查询表格
-  ListBody, //'./BaseList/Components/ListBody'; //基础查询表格体
-  EditTableListBody, //'./BaseList/Components/EditTableListBody'; //可编辑查询表格体
-} from 'qg-react-components';
-
+//公共组件
+export { BaseList } from 'qg-react-components'; //'./BaseList'; //基础查询表格
+export { EditTableListBody } from 'qg-react-components'; //'./BaseList/Components/EditTableListBody'; //可编辑查询表格体
+export { ListBody } from 'qg-react-components'; //'./BaseList/Components/ListBody'; //基础查询表格体
+export { Svg } from 'qg-react-components'; //'./Svg'; //Svg雪碧图配合插件
 export { DriverGroup } from 'qg-react-components'; //'./DriverGroup'; //自定义分割组
 export { FunctionControl } from 'qg-react-components'; //'./FunctionControl'; //查询表格控件
 export { ProtectedButton } from 'qg-react-components'; //'./ProtectedButton'; //权限按钮
 export { Img } from 'qg-react-components'; //'./Img'; // 图片插入组件
-export { Svg } from 'qg-react-components'; //'./Svg'; //Svg雪碧图配合插件
-
 export { BreadcrumbNav } from 'qg-react-components'; // './BreadcrumbNav'; //面包屑
 export { FormComponents } from 'qg-react-components'; // './FormComponents';  //自定义表单组件
 export { SearchForm } from 'qg-react-components'; //'./SearchForm'; //查询表单

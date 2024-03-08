@@ -1,14 +1,16 @@
 import { BgColorsOutlined } from '@ant-design/icons';
-import { Drawer, Form, InputNumber, message } from 'antd';
+import { Drawer, Form, InputNumber } from 'antd';
 import React, { FC, useLayoutEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { setAntdTheme } from '@/store/counter';
-import { IRootStateProps } from '@/store/types';
+import {
+  FormComponents,
+  IRootStateProps,
+  ProtectedButton,
+  setAntdTheme,
+  useDispatch,
+  useSelector,
+} from '@/components/system';
 
-import { FormComponents } from '@/components/system';
-
-import ProtectedButton from '../../../ProtectedButton';
 import { IConfigDrawerProps } from './types';
 
 //@ts-ignore

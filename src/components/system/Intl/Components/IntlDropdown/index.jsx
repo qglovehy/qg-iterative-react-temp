@@ -2,7 +2,7 @@ import { TranslationOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
 import React, { useRef } from 'react';
 
-import Intl from '../../index';
+import { Intl } from '@/components/system';
 
 import styles from './index.scss';
 

@@ -13,13 +13,15 @@ import React, {
   useImperativeHandle,
   useState,
 } from 'react';
-import { useSelector } from 'react-redux';
 
-import { IRootStateProps } from '@/store/types';
+import {
+  ConditionalRender,
+  FormComponents,
+  IRootStateProps,
+  WangEditorFrame,
+  useSelector,
+} from '@/components/system';
 
-import ConditionalRender from '../../../ConditionalRender';
-import FormComponents from '../../../FormComponents';
-import WangEditorFrame from '../../../WangEditorFrame';
 import { IEditTableListBodyProps, IEditableCellProps } from './types';
 
 // @ts-ignore
@@ -205,7 +207,6 @@ const EditableCell: FC<IEditableCellProps> = ({
 
 const EditTableListBodyIndex: ForwardRefRenderFunction<unknown, IEditTableListBodyProps> = (
   {
-    onRowChange = (selectedRowKeys: any[], selectedRows: any[]) => null,
     handleSaveCallBack = (a: {}) => a,
     columns: defaultColumns = [],
     dataSource: dataList = [],
@@ -220,10 +221,6 @@ const EditTableListBodyIndex: ForwardRefRenderFunction<unknown, IEditTableListBo
   const { dict } = useSelector((state: IRootStateProps) => state.counter.value);
 
   const [dataSource, setDataSource] = useState([]);
-
-  //更新多选参数 selectedRowKeys:多选id  selectedRows:多选整条数据
-  const onRowSelectionChange = (selectedRowKeys: any[], selectedRows: any[]) =>
-    onRowChange(selectedRowKeys, selectedRows);
 
   //保存 第二步
   //values: 已经改过的属性对象
@@ -306,14 +303,7 @@ const EditTableListBodyIndex: ForwardRefRenderFunction<unknown, IEditTableListBo
             dataSource={dataSource}
             pagination={false}
             rowKey={(record) => record?.rowKey}
-            rowSelection={
-              typeof rowSelection === 'object'
-                ? {
-                    onChange: onRowSelectionChange,
-                    ...rowSelection,
-                  }
-                : undefined
-            }
+            rowSelection={typeof rowSelection === 'object' ? rowSelection : undefined}
             scroll={{
               y: scrollY!,
               x: scrollX!,

@@ -23,7 +23,7 @@
 *::-webkit-scrollbar-thumb {
     background-color: #dcdcdc;
     border-radius: 6px;
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .6);
 }
 
 /* 滚动条滑块 点击 */
