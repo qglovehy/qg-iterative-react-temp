@@ -49,7 +49,7 @@
     "moment": "^2.29.4",
     "prop-types": "^15.8.1",
     "protobufjs": "^6.11.2",
-    "qg-react-components": "^3.1.2",
+    "qg-react-components": "^3.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intl-universal": "^2.9.1",
