@@ -14,7 +14,7 @@ const resolve = (dir) => path.join(runtimePath, dir);
 
 const webpackConfig = merge(common, {
   mode: 'production',
-  entry: resolve('src/index.js'),
+  entry: resolve('src/index.ts'),
   devtool: 'cheap-module-source-map',
   output: {
     path: resolve('lib'), // 输出目录
