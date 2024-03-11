@@ -8,6 +8,8 @@ import '@/styles/root.scss';
 
 import 'qg-react-components/lib/index.css';
 
+export { default as dayjs } from 'dayjs';
+
 //==========================组件库组件===================================================
 //持久化存储 redux
 export { Provider, useDispatch, useSelector } from 'qg-react-components'; //'react-redux';

@@ -2,14 +2,12 @@ import { CheckCircleTwoTone, CloseCircleTwoTone, EditTwoTone } from '@ant-design
 import { DatePicker, Form, Input, Space, Table } from 'antd';
 import { FormInstance } from 'antd';
 import classNames from 'classnames';
-import dayjs from 'dayjs';
 import React, {
   FC,
   ForwardRefRenderFunction,
   forwardRef,
   memo,
   useContext,
-  useEffect,
   useImperativeHandle,
   useState,
 } from 'react';
@@ -19,6 +17,7 @@ import {
   FormComponents,
   IRootStateProps,
   WangEditorFrame,
+  dayjs,
   useSelector,
 } from '@/components/system';
 
@@ -220,13 +219,11 @@ const EditTableListBodyIndex: ForwardRefRenderFunction<unknown, IEditTableListBo
 ) => {
   const { dict } = useSelector((state: IRootStateProps) => state.counter.value);
 
-  const [dataSource, setDataSource] = useState([]);
-
   //保存 第二步
   //values: 已经改过的属性对象
   //dataIndex: 当前需要修改的字段名  即使当下点击了多个单元格
   const handleSave = (values: any, record: any) => {
-    const newData = [...dataSource] as any;
+    const newData = [...((dataList as []) || [])] as any;
 
     //找到values对应的行
     const index = newData.findIndex((item) => item.rowKey === record.rowKey);
@@ -236,8 +233,6 @@ const EditTableListBodyIndex: ForwardRefRenderFunction<unknown, IEditTableListBo
       ...((newData[index] as any) || {}),
       ...values,
     };
-
-    setDataSource(newData);
 
     const saveRecord = { ...((newData[index] as any) || {}) };
 
@@ -287,10 +282,6 @@ const EditTableListBodyIndex: ForwardRefRenderFunction<unknown, IEditTableListBo
     onSearch: () => {},
   }));
 
-  useEffect(() => {
-    dataList && setDataSource([...((dataList as []) || [])]);
-  }, [dataList]);
-
   return (
     <div className={styles.EditableIndex}>
       <ConditionalRender conditional={dataList?.length > 0}>
@@ -300,7 +291,7 @@ const EditTableListBodyIndex: ForwardRefRenderFunction<unknown, IEditTableListBo
             {...otherParams}
             columns={columns}
             components={components}
-            dataSource={dataSource}
+            dataSource={dataList}
             pagination={false}
             rowKey={(record) => record?.rowKey}
             rowSelection={typeof rowSelection === 'object' ? rowSelection : undefined}

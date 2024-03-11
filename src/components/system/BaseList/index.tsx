@@ -125,7 +125,7 @@ const BaseList: ForwardRefRenderFunction<unknown, IBaseListProps> = (
     setTimeout(() => setState({ loading: false }), 5000);
 
     //查询列表数据
-    serviceFunc?.(params, ({ dataSource, total }) => {
+    serviceFunc?.(params, ({ dataSource = [], total = 0 }) => {
       setState({ loading: false });
 
       //添加rowKey 序号等信息

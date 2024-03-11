@@ -1,6 +1,8 @@
 import { Form, Space, message } from 'antd';
 import React, { useRef, useState } from 'react';
 
+import { requestEditTableList } from '@/services/edit_table';
+
 import { BaseList, FormComponents, Intl, ProtectedButton, RenderDom } from '@/components/system';
 
 import LocalizedModal from '../SaveOrUpdate';
@@ -156,34 +158,18 @@ function TableIndex() {
   //查询列表数据
   async function requestTableData(params = {}, callback) {
     //将数据格式整理成 如下然后传入查询表格组件
+    const res = await requestEditTableList(params);
+
+    if (res?.code !== 200) {
+      message.error(res.msg);
+
+      return;
+    }
+
+    //将数据格式整理成 如下然后传入查询表格组件
     const resData = {
-      dataSource: [
-        {
-          id: 1,
-          zone_Name: '新60L服',
-          input1: '是对',
-          number1: 1,
-          select1: '男',
-          radio1: '女',
-          date1: '2023-12-12',
-          datetime1: '2023-12-12 12:12:12',
-          textarea1: '是对啊是丢阿斯蒂阿萨德',
-          editor1: '<p>helloworld</p>',
-        },
-        {
-          id: 2,
-          zone_Name: '新60L服（新区）刚开一秒',
-          input1: 'sdasd ',
-          number1: 2,
-          select1: '男',
-          radio1: '女',
-          date1: '2023-12-12',
-          datetime1: '2023-12-12 12:12:12',
-          textarea1: '是对啊是丢阿斯蒂阿萨德',
-          editor1: '<p>helloworldasdaasdasd</p>',
-        },
-      ],
-      total: 2,
+      dataSource: res.data,
+      total: res?.total,
     };
 
     callback?.(resData);
