@@ -28,7 +28,7 @@ const BreadcrumbNav: FC<IBreadcrumbNavProps> = ({
         ),
       },
       ...breadcrumb.reduce((acc, current) => {
-        if (acc.findIndex((item) => item.title === current.title) === -1) {
+        if (acc.findIndex((item: { title: any }) => item.title === current.title) === -1) {
           acc.push(current);
         }
 
