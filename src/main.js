@@ -1,5 +1,6 @@
 import App from '@/App/App';
 
+import { StyleProvider } from '@ant-design/cssinjs';
 import { message } from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -41,7 +42,9 @@ Intl?.init(zh_CN_List)?.then(async (err) => {
       {/*如果使用React,则使用 PersistGate 包裹根组建*/}
       <PersistGate loading={null} persistor={persistence}>
         <HashRouter>
-          <App />
+          <StyleProvider hashPriority="high">
+            <App />
+          </StyleProvider>
         </HashRouter>
       </PersistGate>
     </Provider>,
