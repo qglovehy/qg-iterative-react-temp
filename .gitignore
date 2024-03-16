@@ -12,6 +12,9 @@
 
 # production
 /build
+/apps
+appw.zip
+/core-pro
 
 # misc
 .DS_Store
