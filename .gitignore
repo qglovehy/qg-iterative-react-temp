@@ -13,8 +13,13 @@
 # production
 /build
 /apps
-appw.zip
+/nsis-diy-package
+/core
 /core-pro
+/ReactElectronUpdate
+
+appw.zip
+ReactElectronUpdate.zip
 
 # misc
 .DS_Store

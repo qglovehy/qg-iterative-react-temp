@@ -15,7 +15,7 @@ export { default as dayjs } from 'dayjs';
 export { Provider, useDispatch, useSelector } from 'qg-react-components'; //'react-redux';
 export { PersistGate } from 'qg-react-components'; //'redux-persist/lib/integration/react';
 
-export { onResetState, onSetState, setAntdTheme } from 'qg-react-components'; //'@/store/counter';
+export { onResetState, onSetState, setAntdTheme, onMergeState } from 'qg-react-components'; //'@/store/counter';
 
 export { store, persistence } from 'qg-react-components'; //@/store
 export type { IRootStateProps } from 'qg-react-components'; //@/store/types
@@ -25,7 +25,7 @@ export { IntlDropdown } from 'qg-react-components'; //  './Intl/Components/IntlD
 
 export { initDictData, Dict } from 'qg-react-components'; //'@/utils/dictionaryData'; //初始化字典
 
-export { useSetState, useMediaQuery } from 'qg-react-components'; // '@/hooks'; //自定义钩子
+export { useSetState, useMediaQuery, useElectron } from 'qg-react-components'; // '@/hooks'; //自定义钩子
 
 //公共组件
 export { BaseList } from 'qg-react-components'; //'./BaseList'; //基础查询表格

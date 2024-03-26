@@ -1,4 +1,3 @@
-import { HappyProvider } from '@ant-design/happy-work-theme';
 import { ConfigProvider, Spin, message as messageApi } from 'antd';
 import en_US from 'antd/locale/en_US';
 import zh_CN from 'antd/locale/zh_CN';
@@ -8,6 +7,8 @@ import 'dayjs/locale/zh-cn';
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { HappyProvider } from '@ant-design/happy-work-theme';
+
 // import { ws } from '@/utils/webSocket';
 import { prevState } from '@/store/init';
 
@@ -16,9 +17,7 @@ import Routers from '@/router/index';
 import {
   MessageContext,
   initDictData,
-  onResetState,
   onSetState,
-  store,
   useDispatch,
   useSelector,
 } from '@/components/system';
@@ -52,7 +51,6 @@ function AppIndex() {
 
   useEffect(() => {
     //初始化预设状态
-    // dispatch(onResetState());
     dispatch(onSetState({ ...prevState }));
 
     //初始化字典项

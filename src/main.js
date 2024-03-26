@@ -1,14 +1,15 @@
 import App from '@/App/App';
 
-import { StyleProvider } from '@ant-design/cssinjs';
 import { message } from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 
+import { StyleProvider } from '@ant-design/cssinjs';
+
 import { state } from '@/store/init';
 
-import { Intl, PersistGate, Provider, onSetState, persistence, store } from '@/components/system';
+import { Intl, PersistGate, Provider, onMergeState, persistence, store } from '@/components/system';
 
 import '@/assets';
 
@@ -32,7 +33,8 @@ Intl?.init(zh_CN_List)?.then(async (err) => {
     return;
   }
 
-  store.dispatch(onSetState({ ...state }));
+  //合并初始化状态
+  store.dispatch(onMergeState({ ...state }));
 
   //注入src绝对路径
   const root = ReactDOM.createRoot(document.getElementById('app'));
